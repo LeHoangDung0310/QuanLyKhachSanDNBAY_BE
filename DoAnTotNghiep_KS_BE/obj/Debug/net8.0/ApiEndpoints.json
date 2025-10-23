@@ -1,0 +1,288 @@
+[
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DangKyController",
+    "Method": "DangKy",
+    "RelativePath": "api/DangKy/dang-ky",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dangKyDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DangKyDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DangKyResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DangKyController",
+    "Method": "GuiLaiOTP",
+    "RelativePath": "api/DangKy/gui-lai-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "guiLaiOTPDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.GuiLaiOTPDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DangKyResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DangKyController",
+    "Method": "XacThucOTP",
+    "RelativePath": "api/DangKy/xac-thuc-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xacThucOTPDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoginController",
+    "Method": "DoiMatKhau",
+    "RelativePath": "api/Login/doi-mat-khau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doiMatKhauDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DoiMatKhauDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoginController",
+    "Method": "Login",
+    "RelativePath": "api/Login/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoginResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoginController",
+    "Method": "Logout",
+    "RelativePath": "api/Login/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "refreshTokenDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.RefreshTokenDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoginController",
+    "Method": "LogoutAll",
+    "RelativePath": "api/Login/logout-all",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoginController",
+    "Method": "GetCurrentUser",
+    "RelativePath": "api/Login/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.UserInfoDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoginController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Login/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "refreshTokenDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.RefreshTokenDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.RefreshTokenResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.QuenMatKhauController",
+    "Method": "DatLaiMatKhau",
+    "RelativePath": "api/QuenMatKhau/dat-lai-mat-khau",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "datLaiMatKhauDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DatLaiMatKhauDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DatLaiMatKhauResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.QuenMatKhauController",
+    "Method": "DebugOTP",
+    "RelativePath": "api/QuenMatKhau/debug-otp/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.QuenMatKhauController",
+    "Method": "GuiOTP",
+    "RelativePath": "api/QuenMatKhau/gui-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quenMatKhauDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.QuenMatKhauDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.QuenMatKhauResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.QuenMatKhauController",
+    "Method": "XacThucOTP",
+    "RelativePath": "api/QuenMatKhau/xac-thuc-otp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "xacThucOTPDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPQuenMatKhauDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPQuenMatKhauResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

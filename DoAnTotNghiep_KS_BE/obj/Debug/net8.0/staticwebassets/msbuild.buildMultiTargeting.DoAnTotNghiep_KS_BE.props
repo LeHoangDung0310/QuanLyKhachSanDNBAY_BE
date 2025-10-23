@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DoAnTotNghiep_KS_BE.props" />
+</Project>
