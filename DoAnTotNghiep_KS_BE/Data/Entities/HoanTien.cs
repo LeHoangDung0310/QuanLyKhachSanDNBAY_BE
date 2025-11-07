@@ -15,20 +15,8 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [ForeignKey("HuyDatPhong")]
         public int MaHuyDatPhong { get; set; }
 
-        [Column(TypeName = "decimal(12,2)")]
-        public decimal? SoTienHoan { get; set; }
-
         [StringLength(50)]
         public string TrangThai { get; set; } = "ChoXuLy";
-
-        [StringLength(50)]
-        public string? SoTaiKhoan { get; set; }
-
-        [StringLength(100)]
-        public string? NganHang { get; set; }
-
-        [StringLength(100)]
-        public string? TenChuTaiKhoan { get; set; }
 
         [ForeignKey("QuanTri")]
         public int? MaQuanTri { get; set; }

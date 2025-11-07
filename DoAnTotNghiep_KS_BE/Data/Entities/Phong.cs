@@ -21,6 +21,8 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
 
         public int? SoGiuong { get; set; }
 
+        public int? SoNguoiToiDa { get; set; }
+
         [StringLength(100)]
         public string? HuongNhin { get; set; }
 
@@ -39,7 +41,7 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         public virtual Tang? Tang { get; set; }
         public virtual ICollection<Phong_TienNghi>? Phong_TienNghis { get; set; }
         public virtual ICollection<HinhAnhPhong>? HinhAnhPhongs { get; set; }
-        public virtual ICollection<DatPhong>? DatPhongs { get; set; }
+        public virtual ICollection<DatPhong_Phong>? DatPhong_Phongs { get; set; }
         public virtual ICollection<DanhGia>? DanhGias { get; set; }
     }
 }

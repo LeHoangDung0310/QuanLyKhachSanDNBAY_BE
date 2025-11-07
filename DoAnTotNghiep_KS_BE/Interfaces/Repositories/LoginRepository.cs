@@ -6,8 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using BCrypt.Net;
 using System.Security.Cryptography;
 using System.Text;
+
 
 namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
 {
@@ -24,7 +26,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             _logger = logger;
         }
 
-        public async Task<LoginResponseDTO> LoginAsync(LoginDTO loginDTO, string? ipAddress)
+        public async Task<LoginResponseDTO> LoginAsync(LoginDTO loginDTO, string ipAddress)
         {
             try
             {

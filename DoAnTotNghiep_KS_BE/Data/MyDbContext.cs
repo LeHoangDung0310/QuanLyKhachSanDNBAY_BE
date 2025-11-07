@@ -18,6 +18,7 @@ namespace DoAnTotNghiep_KS_BE.Data
 		public DbSet<Phong_TienNghi> Phong_TienNghis { get; set; }
 		public DbSet<HinhAnhPhong> HinhAnhPhongs { get; set; }
 		public DbSet<DatPhong> DatPhongs { get; set; }
+		public DbSet<DatPhong_Phong> DatPhong_Phongs { get; set; }
 		public DbSet<ThanhToan> ThanhToans { get; set; }
 		public DbSet<HuyDatPhong> HuyDatPhongs { get; set; }
 		public DbSet<HoanTien> HoanTiens { get; set; }
@@ -57,6 +58,26 @@ namespace DoAnTotNghiep_KS_BE.Data
 			modelBuilder.Entity<Phong>()
 				.HasIndex(p => p.SoPhong)
 				.IsUnique();
+
+			// Cấu hình bảng trung gian DatPhong_Phong
+			modelBuilder.Entity<DatPhong_Phong>(entity =>
+			{
+				entity.HasKey(e => e.MaDatPhong_Phong);
+
+				entity.HasOne(e => e.DatPhong)
+					.WithMany(d => d.DatPhong_Phongs)
+					.HasForeignKey(e => e.MaDatPhong)
+					.OnDelete(DeleteBehavior.Cascade);
+
+				entity.HasOne(e => e.Phong)
+					.WithMany(p => p.DatPhong_Phongs)
+					.HasForeignKey(e => e.MaPhong)
+					.OnDelete(DeleteBehavior.Restrict);
+
+				// Tạo unique constraint cho cặp MaDatPhong + MaPhong (tránh trùng)
+				entity.HasIndex(e => new { e.MaDatPhong, e.MaPhong })
+					.IsUnique();
+			});
 
 			// Cấu hình quan hệ HuyDatPhong với NguoiDung (tránh multiple cascade paths)
 			modelBuilder.Entity<HuyDatPhong>()

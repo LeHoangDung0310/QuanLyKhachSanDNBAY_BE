@@ -4,6 +4,7 @@ using DoAnTotNghiep_KS_BE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoAnTotNghiep_KS_BE.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251101085238_Add_DatPhong_Phong")]
+    partial class Add_DatPhong_Phong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,11 +91,11 @@ namespace DoAnTotNghiep_KS_BE.Migrations
 
             modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.DatPhong_Phong", b =>
                 {
-                    b.Property<int>("MaDatPhong_Phong")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaDatPhong_Phong"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("MaDatPhong")
                         .HasColumnType("int");
@@ -100,12 +103,11 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.Property<int>("MaPhong")
                         .HasColumnType("int");
 
-                    b.HasKey("MaDatPhong_Phong");
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaDatPhong");
 
                     b.HasIndex("MaPhong");
-
-                    b.HasIndex("MaDatPhong", "MaPhong")
-                        .IsUnique();
 
                     b.ToTable("DatPhong_Phong");
                 });
@@ -547,7 +549,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.HasOne("DoAnTotNghiep_KS_BE.Data.Entities.Phong", "Phong")
                         .WithMany("DatPhong_Phongs")
                         .HasForeignKey("MaPhong")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DatPhong");
