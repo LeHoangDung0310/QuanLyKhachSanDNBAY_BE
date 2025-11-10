@@ -1,0 +1,16 @@
+using DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung;
+
+namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
+{
+    public interface INguoiDungRepository
+    {
+        Task<IEnumerable<NguoiDungDTO>> GetAllNguoiDungsAsync();
+        Task<IEnumerable<NguoiDungDTO>> GetNguoiDungsByRoleAsync(string vaiTro);
+        Task<NguoiDungDTO?> GetNguoiDungByIdAsync(int maNguoiDung);
+        Task<(IEnumerable<NguoiDungDTO> data, int total)> SearchNguoiDungsAsync(SearchNguoiDungDTO searchDTO);
+        Task<bool> UpdateNguoiDungAsync(int maNguoiDung, UpdateNguoiDungAdminDTO updateDTO);
+        Task<bool> DeleteNguoiDungAsync(int maNguoiDung);
+        Task<bool> NguoiDungExistsAsync(int maNguoiDung);
+        Task<bool> CanDeleteNguoiDungAsync(int maNguoiDung);
+    }
+}

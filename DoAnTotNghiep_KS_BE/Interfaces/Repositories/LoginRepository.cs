@@ -1,6 +1,6 @@
 using DoAnTotNghiep_KS_BE.Data;
 using DoAnTotNghiep_KS_BE.Data.Entities;
-using DoAnTotNghiep_KS_BE.Interfaces.dto;
+using DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc;
 using DoAnTotNghiep_KS_BE.Interfaces.IRepositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

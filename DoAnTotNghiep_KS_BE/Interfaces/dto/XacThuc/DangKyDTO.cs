@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DoAnTotNghiep_KS_BE.Interfaces.dto
+namespace DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc
 {
     // DTO để gửi yêu cầu đăng ký
     public class DangKyDTO

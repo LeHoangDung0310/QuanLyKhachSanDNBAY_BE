@@ -1,4 +1,4 @@
-using DoAnTotNghiep_KS_BE.Interfaces.dto;
+using DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc;
 
 namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
 {

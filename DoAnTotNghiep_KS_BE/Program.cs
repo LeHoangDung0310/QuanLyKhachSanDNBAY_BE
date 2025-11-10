@@ -20,9 +20,16 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<IDangKyRepository, DangKyRepository>();
 builder.Services.AddScoped<IQuenMatKhauRepository, QuenMatKhauRepository>();
+builder.Services.AddScoped<INguoiDungRepository, NguoiDungRepository>();
 
 // Đăng ký services
 builder.Services.AddScoped<IEmailService, EmailService>();
+
+// Thêm vào phần đăng ký services
+builder.Services.AddScoped<ITienNghiRepository, TienNghiRepository>();
+builder.Services.AddScoped<IHinhAnhPhongRepository, HinhAnhPhongRepository>();
+builder.Services.AddScoped<IPhongRepository, PhongRepository>();
+builder.Services.AddScoped<ITangRepository, TangRepository>();
 
 // Thêm CORS cho phep FE gọi API
 builder.Services.AddCors(options =>
