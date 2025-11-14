@@ -40,12 +40,7 @@ namespace DoAnTotNghiep_KS_BE.Controllers
             [FromQuery] int pageNumber = 1,
             [FromQuery] int pageSize = 10)
         {
-            // Validate vai trò nếu có
-            if (!string.IsNullOrWhiteSpace(vaiTro) &&
-                !new[] { "Admin", "KhachHang", "NhanVien" }.Contains(vaiTro))
-            {
-                return BadRequest(new { message = "Vai trò không hợp lệ" });
-            }
+            // KHÔNG validate vaiTro nữa, để repo tự lọc
 
             // Validate trạng thái nếu có
             if (!string.IsNullOrWhiteSpace(trangThai) &&
@@ -54,11 +49,10 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 return BadRequest(new { message = "Trạng thái không hợp lệ" });
             }
 
-            // Validate phân trang
             if (pageNumber < 1) pageNumber = 1;
             if (pageSize < 1 || pageSize > 100) pageSize = 10;
 
-            var searchDTO = new SearchNguoiDungDTO
+            var searchDto = new SearchNguoiDungDTO
             {
                 SearchTerm = searchTerm,
                 VaiTro = vaiTro,
@@ -67,30 +61,39 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 PageSize = pageSize
             };
 
-            var (data, total) = await _nguoiDungRepository.SearchNguoiDungsAsync(searchDTO);
+            var (data, total) = await _nguoiDungRepository.SearchNguoiDungsAsync(searchDto);
 
             return Ok(new
             {
-                success = true,
-                data = data,
+                data,
                 pagination = new
                 {
                     currentPage = pageNumber,
-                    pageSize = pageSize,
+                    pageSize,
                     totalItems = total,
                     totalPages = (int)Math.Ceiling(total / (double)pageSize)
                 }
             });
         }
 
-        // GET: api/NguoiDung/Role/KhachHang
+        // GET: api/NguoiDung/Role/{vaiTro}
         [HttpGet("Role/{vaiTro}")]
         public async Task<ActionResult<IEnumerable<NguoiDungDTO>>> GetNguoiDungsByRole(string vaiTro)
         {
-            if (!new[] { "Admin", "KhachHang", "NhanVien" }.Contains(vaiTro))
+            var roleNorm = vaiTro.Trim();
+
+            var allowedRoles = new[] { "Admin", "KhachHang", "LeTan" };
+            if (!allowedRoles.Any(r => string.Equals(r, roleNorm, StringComparison.OrdinalIgnoreCase)))
             {
                 return BadRequest(new { message = "Vai trò không hợp lệ" });
             }
+
+            if (roleNorm.Equals("admin", StringComparison.OrdinalIgnoreCase))
+                vaiTro = "Admin";
+            else if (roleNorm.Equals("khachhang", StringComparison.OrdinalIgnoreCase))
+                vaiTro = "KhachHang";
+            else if (roleNorm.Equals("letan", StringComparison.OrdinalIgnoreCase))
+                vaiTro = "LeTan";
 
             var nguoiDungs = await _nguoiDungRepository.GetNguoiDungsByRoleAsync(vaiTro);
             return Ok(new
@@ -209,7 +212,7 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 total = allUsers.Count(),
                 admins = allUsers.Count(u => u.VaiTro == "Admin"),
                 customers = allUsers.Count(u => u.VaiTro == "KhachHang"),
-                employees = allUsers.Count(u => u.VaiTro == "NhanVien"),
+                employees = allUsers.Count(u => u.VaiTro == "LeTan"),
                 active = allUsers.Count(u => u.TrangThai == "Hoạt động"),
                 locked = allUsers.Count(u => u.TrangThai == "Tạm khóa")
             };

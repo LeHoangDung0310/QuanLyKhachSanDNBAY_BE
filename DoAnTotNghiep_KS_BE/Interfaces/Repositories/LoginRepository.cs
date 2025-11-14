@@ -49,21 +49,47 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
 
                 _logger.LogInformation($"[Login] User found: MaNguoiDung={user.MaNguoiDung}, TrangThai={user.TrangThai}");
 
-                // Kiểm tra mật khẩu
-                bool isPasswordValid = false;
-                try
+                // ✅ Kiểm tra mật khẩu có tồn tại không
+                if (string.IsNullOrEmpty(user.MatKhau))
                 {
-                    isPasswordValid = BCrypt.Net.BCrypt.Verify(loginDTO.MatKhau, user.MatKhau);
-                    _logger.LogInformation($"[Login] Password verification result: {isPasswordValid}");
-                }
-                catch (Exception bcryptEx)
-                {
-                    _logger.LogError(bcryptEx, $"[Login] BCrypt verification error");
+                    _logger.LogWarning($"[Login] User {normalizedEmail} has no password (Google login)");
                     return new LoginResponseDTO
                     {
                         Success = false,
-                        Message = "Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại!"
+                        Message = "Tài khoản đăng nhập bằng Google. Vui lòng sử dụng đăng nhập Google!"
                     };
+                }
+
+                // ✅ Kiểm tra mật khẩu: BCrypt hash hoặc plain text
+                bool isPasswordValid = false;
+                bool isPlainTextPassword = false;
+
+                // Kiểm tra xem có phải BCrypt hash không
+                if (user.MatKhau.StartsWith("$2a$") || user.MatKhau.StartsWith("$2b$") || user.MatKhau.StartsWith("$2y$"))
+                {
+                    // Mật khẩu đã được hash bằng BCrypt
+                    try
+                    {
+                        isPasswordValid = BCrypt.Net.BCrypt.Verify(loginDTO.MatKhau, user.MatKhau);
+                        _logger.LogInformation($"[Login] BCrypt verification result: {isPasswordValid}");
+                    }
+                    catch (Exception bcryptEx)
+                    {
+                        _logger.LogError(bcryptEx, $"[Login] BCrypt verification error");
+                        return new LoginResponseDTO
+                        {
+                            Success = false,
+                            Message = "Đã xảy ra lỗi khi xác thực mật khẩu!"
+                        };
+                    }
+                }
+                else
+                {
+                    // ⚠️ Mật khẩu chưa được hash (plain text) - SO SÁNH TRỰC TIẾP
+                    _logger.LogWarning($"[Login] Plain text password detected for user: {normalizedEmail}");
+                    isPasswordValid = user.MatKhau == loginDTO.MatKhau;
+                    isPlainTextPassword = true;
+                    _logger.LogInformation($"[Login] Plain text verification result: {isPasswordValid}");
                 }
 
                 if (!isPasswordValid)
@@ -74,6 +100,24 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                         Success = false,
                         Message = "Email hoặc mật khẩu không đúng!"
                     };
+                }
+
+                // ✅ Nếu đăng nhập thành công với plain text password -> TỰ ĐỘNG HASH VÀ CẬP NHẬT
+                if (isPlainTextPassword)
+                {
+                    try
+                    {
+                        _logger.LogInformation($"[Login] Converting plain text password to BCrypt hash for user: {normalizedEmail}");
+                        user.MatKhau = BCrypt.Net.BCrypt.HashPassword(loginDTO.MatKhau);
+                        _context.NguoiDungs.Update(user);
+                        await _context.SaveChangesAsync();
+                        _logger.LogInformation($"[Login] Password successfully hashed for user: {normalizedEmail}");
+                    }
+                    catch (Exception hashEx)
+                    {
+                        _logger.LogError(hashEx, $"[Login] Error hashing password for user: {normalizedEmail}");
+                        // Không return error, vẫn cho đăng nhập thành công
+                    }
                 }
 
                 // Kiểm tra trạng thái tài khoản

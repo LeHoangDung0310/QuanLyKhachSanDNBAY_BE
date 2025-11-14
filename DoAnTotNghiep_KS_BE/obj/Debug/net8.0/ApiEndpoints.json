@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "dangKyDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DangKyDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.DangKyDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DangKyResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.DangKyResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -35,13 +35,13 @@
     "Parameters": [
       {
         "Name": "guiLaiOTPDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.GuiLaiOTPDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.GuiLaiOTPDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DangKyResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.DangKyResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -61,13 +61,13 @@
     "Parameters": [
       {
         "Name": "xacThucOTPDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.XacThucOTPDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.XacThucOTPResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -76,6 +76,172 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
+    "Method": "GetHinhAnhPhongs",
+    "RelativePath": "api/HinhAnhPhong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
+    "Method": "CreateHinhAnhPhong",
+    "RelativePath": "api/HinhAnhPhong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createHinhAnhPhongDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.CreateHinhAnhPhongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
+    "Method": "GetHinhAnhPhong",
+    "RelativePath": "api/HinhAnhPhong/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
+    "Method": "UpdateHinhAnhPhong",
+    "RelativePath": "api/HinhAnhPhong/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateHinhAnhPhongDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.UpdateHinhAnhPhongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
+    "Method": "DeleteHinhAnhPhong",
+    "RelativePath": "api/HinhAnhPhong/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
+    "Method": "GetHinhAnhsByPhong",
+    "RelativePath": "api/HinhAnhPhong/Phong/{maPhong}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maPhong",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
+    "Method": "SearchHinhAnhPhongs",
+    "RelativePath": "api/HinhAnhPhong/Search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maPhong",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soPhong",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoginController",
@@ -87,7 +253,7 @@
     "Parameters": [
       {
         "Name": "doiMatKhauDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DoiMatKhauDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.DoiMatKhauDTO",
         "IsRequired": true
       }
     ],
@@ -103,13 +269,13 @@
     "Parameters": [
       {
         "Name": "loginDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoginDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.LoginDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoginResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.LoginResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -129,7 +295,7 @@
     "Parameters": [
       {
         "Name": "refreshTokenDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.RefreshTokenDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.RefreshTokenDTO",
         "IsRequired": true
       }
     ],
@@ -155,7 +321,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.UserInfoDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.UserInfoDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -175,13 +341,13 @@
     "Parameters": [
       {
         "Name": "refreshTokenDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.RefreshTokenDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.RefreshTokenDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.RefreshTokenResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.RefreshTokenResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -190,6 +356,341 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "GetNguoiDungs",
+    "RelativePath": "api/NguoiDung",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung.NguoiDungDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "GetNguoiDung",
+    "RelativePath": "api/NguoiDung/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung.NguoiDungDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "UpdateNguoiDung",
+    "RelativePath": "api/NguoiDung/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung.UpdateNguoiDungAdminDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "DeleteNguoiDung",
+    "RelativePath": "api/NguoiDung/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "GetNguoiDungsByRole",
+    "RelativePath": "api/NguoiDung/Role/{vaiTro}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vaiTro",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung.NguoiDungDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "SearchNguoiDungs",
+    "RelativePath": "api/NguoiDung/Search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "vaiTro",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "trangThai",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "GetStatistics",
+    "RelativePath": "api/NguoiDung/Statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
+    "Method": "GetPhongs",
+    "RelativePath": "api/Phong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.Phong.PhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
+    "Method": "CreatePhong",
+    "RelativePath": "api/Phong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createPhongDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Phong.CreatePhongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Phong.PhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
+    "Method": "GetPhong",
+    "RelativePath": "api/Phong/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Phong.PhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
+    "Method": "UpdatePhong",
+    "RelativePath": "api/Phong/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatePhongDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Phong.UpdatePhongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
+    "Method": "DeletePhong",
+    "RelativePath": "api/Phong/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
+    "Method": "SearchPhongs",
+    "RelativePath": "api/Phong/Search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "soPhong",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "tenLoai",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "soGiuongMin",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soGiuongMax",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soNguoiToiDaMin",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soNguoiToiDaMax",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "giaMin",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "giaMax",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "trangThai",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "maTang",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.QuenMatKhauController",
@@ -201,13 +702,13 @@
     "Parameters": [
       {
         "Name": "datLaiMatKhauDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DatLaiMatKhauDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.DatLaiMatKhauDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DatLaiMatKhauResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.DatLaiMatKhauResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -243,13 +744,13 @@
     "Parameters": [
       {
         "Name": "quenMatKhauDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.QuenMatKhauDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.QuenMatKhauDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.QuenMatKhauResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.QuenMatKhauResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -269,13 +770,13 @@
     "Parameters": [
       {
         "Name": "xacThucOTPDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPQuenMatKhauDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.XacThucOTPQuenMatKhauDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThucOTPQuenMatKhauResponseDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc.XacThucOTPQuenMatKhauResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -284,5 +785,275 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TangController",
+    "Method": "GetTangs",
+    "RelativePath": "api/Tang",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.Tang.TangDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TangController",
+    "Method": "CreateTang",
+    "RelativePath": "api/Tang",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createTangDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Tang.CreateTangDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Tang.TangDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TangController",
+    "Method": "GetTang",
+    "RelativePath": "api/Tang/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Tang.TangDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TangController",
+    "Method": "UpdateTang",
+    "RelativePath": "api/Tang/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateTangDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.Tang.UpdateTangDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TangController",
+    "Method": "DeleteTang",
+    "RelativePath": "api/Tang/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TangController",
+    "Method": "SearchTangs",
+    "RelativePath": "api/Tang/Search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tenTang",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
+    "Method": "GetTienNghis",
+    "RelativePath": "api/TienNghi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.TienNghi.TienNghiDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
+    "Method": "CreateTienNghi",
+    "RelativePath": "api/TienNghi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createTienNghiDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.TienNghi.CreateTienNghiDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.TienNghi.TienNghiDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
+    "Method": "GetTienNghi",
+    "RelativePath": "api/TienNghi/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.TienNghi.TienNghiDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
+    "Method": "UpdateTienNghi",
+    "RelativePath": "api/TienNghi/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateTienNghiDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.TienNghi.UpdateTienNghiDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
+    "Method": "DeleteTienNghi",
+    "RelativePath": "api/TienNghi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
+    "Method": "SearchTienNghis",
+    "RelativePath": "api/TienNghi/Search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ten",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

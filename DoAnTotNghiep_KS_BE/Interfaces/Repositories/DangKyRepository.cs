@@ -111,7 +111,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 {
                     Email = normalizedEmail,
                     MatKhau = hashedPassword,
-                    VaiTro = "Khách hàng",
+                    VaiTro = "KhachHang",
                     HoTen = dangKyDTO.HoTen,
                     SoDienThoai = dangKyDTO.SoDienThoai,
                     TrangThai = "Chưa xác thực",
@@ -360,7 +360,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 var emailSent = await _emailService.SendOTPEmailAsync(
                     guiLaiOTPDTO.Email,
                     otpCode,
-                    user.HoTen ?? "Khách hàng"
+                    user.HoTen ?? "KhachHang"
                 );
 
                 if (!emailSent)

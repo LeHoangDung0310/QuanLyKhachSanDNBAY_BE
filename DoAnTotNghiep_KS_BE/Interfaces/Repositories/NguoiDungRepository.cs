@@ -76,28 +76,25 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
         {
             var query = _context.NguoiDungs.AsQueryable();
 
-            // Tìm kiếm theo tên hoặc email
             if (!string.IsNullOrWhiteSpace(searchDTO.SearchTerm))
             {
-                var searchTerm = searchDTO.SearchTerm.ToLower().Trim();
+                var term = searchDTO.SearchTerm.Trim().ToLower();
                 query = query.Where(n =>
-                    (n.HoTen != null && n.HoTen.ToLower().Contains(searchTerm)) ||
-                    n.Email.ToLower().Contains(searchTerm));
+                    n.Email.ToLower().Contains(term) ||
+                    (n.HoTen != null && n.HoTen.ToLower().Contains(term)));
             }
 
-            // Lọc theo vai trò
             if (!string.IsNullOrWhiteSpace(searchDTO.VaiTro))
             {
+                // FE gửi đúng Admin / KhachHang / LeTan, DB cũng lưu đúng như vậy
                 query = query.Where(n => n.VaiTro == searchDTO.VaiTro);
             }
 
-            // Lọc theo trạng thái
             if (!string.IsNullOrWhiteSpace(searchDTO.TrangThai))
             {
                 query = query.Where(n => n.TrangThai == searchDTO.TrangThai);
             }
 
-            // Đếm tổng số bản ghi
             var total = await query.CountAsync();
 
             // Phân trang

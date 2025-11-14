@@ -3,40 +3,88 @@
   "WorkspaceRootPath": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251107034140_Update_DatPhong_Phong_Key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DoAnTotNghiep_KS_BE\\Migrations\\20251107034140_Update_DatPhong_Phong_Key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\nguoidungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\nguoidungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\migrations\\20251101085238_add_datphong_phong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\migrations\\20251101085238_add_datphong_phong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\data\\entities\\nguoidung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\data\\entities\\nguoidung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\controllers\\nguoidungcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\controllers\\nguoidungcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\itiennghirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\itiennghirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\itangrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\itangrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\iquenmatkhaurepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\iquenmatkhaurepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\iphongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\iphongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\inguoidungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\inguoidungrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\idangkyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\idangkyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\ihinhanhphongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\ihinhanhphongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\dangkyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\dangkyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\hinhanhphongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\hinhanhphongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\phongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\phongrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\quenmatkhaurepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\quenmatkhaurepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\tangrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\tangrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\tiennghirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\tiennghirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\dto\\hinhanhphong\\updatehinhanhphongdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\dto\\hinhanhphong\\updatehinhanhphongdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\data\\entities\\nguoidung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\data\\entities\\nguoidung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\migrations\\20251023115712_renamerefreshtokenstabletorefreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\migrations\\20251023115712_renamerefreshtokenstabletorefreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023114321_AddRefreshTokenTableClean.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DoAnTotNghiep_KS_BE\\Migrations\\20251023114321_AddRefreshTokenTableClean.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\migrations\\mydbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\migrations\\mydbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\migrations\\20251021171440_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,10 +107,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\repositories\\dangkyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\repositories\\dangkyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -73,10 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\doantotnghiep_ks_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\doantotnghiep_ks_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\interfaces\\irepositories\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|solutionrelative:doantotnghiep_ks_be\\interfaces\\irepositories\\iloginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C552813F-0838-4080-B23B-A7222128353C}|DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj|d:\\doantotnghiep_ks\\doantotnghiep_ks_be\\doantotnghiep_ks_be\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,7 +134,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,197 +150,154 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20251107034140_Update_DatPhong_Phong_Key.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251107034140_Update_DatPhong_Phong_Key.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251107034140_Update_DatPhong_Phong_Key.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251107034140_Update_DatPhong_Phong_Key.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251107034140_Update_DatPhong_Phong_Key.cs",
+              "DocumentIndex": 7,
+              "Title": "INguoiDungRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\INguoiDungRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\INguoiDungRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\INguoiDungRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\INguoiDungRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-07T03:41:40.572Z",
+              "WhenOpened": "2025-11-10T08:34:28.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IDangKyRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IDangKyRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IDangKyRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IDangKyRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IDangKyRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:26.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IHinhAnhPhongRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IHinhAnhPhongRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IHinhAnhPhongRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IHinhAnhPhongRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IHinhAnhPhongRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:25.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NguoiDungRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\NguoiDungRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\NguoiDungRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\NguoiDungRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\NguoiDungRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:19.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "20251101085238_Add_DatPhong_Phong.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251101085238_Add_DatPhong_Phong.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251101085238_Add_DatPhong_Phong.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251101085238_Add_DatPhong_Phong.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251101085238_Add_DatPhong_Phong.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Title": "NguoiDungController.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Controllers\\NguoiDungController.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Controllers\\NguoiDungController.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Controllers\\NguoiDungController.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Controllers\\NguoiDungController.cs",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAAAJQAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-01T08:52:38.474Z",
+              "WhenOpened": "2025-11-14T17:37:35.163Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "20251023114321_AddRefreshTokenTableClean.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023114321_AddRefreshTokenTableClean.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023114321_AddRefreshTokenTableClean.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023114321_AddRefreshTokenTableClean.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023114321_AddRefreshTokenTableClean.cs",
+              "DocumentIndex": 6,
+              "Title": "IPhongRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IPhongRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IPhongRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IPhongRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IPhongRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:43:21.823Z"
+              "WhenOpened": "2025-11-10T08:34:29.279Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MyDbContextModelSnapshot.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\MyDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\MyDbContextModelSnapshot.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\MyDbContextModelSnapshot.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\MyDbContextModelSnapshot.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:42:28.913Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Program.cs",
               "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Program.cs",
               "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Program.cs",
               "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAIwJQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T16:49:22.789Z"
+              "WhenOpened": "2025-10-21T16:49:22.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IQuenMatKhauRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IQuenMatKhauRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IQuenMatKhauRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IQuenMatKhauRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\IQuenMatKhauRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:30.231Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LoginDTO.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\dto\\LoginDTO.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\dto\\LoginDTO.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\dto\\LoginDTO.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\dto\\LoginDTO.cs",
+              "Title": "ITienNghiRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITienNghiRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITienNghiRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITienNghiRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITienNghiRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T04:23:04.147Z"
+              "WhenOpened": "2025-11-10T08:34:32.15Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
+              "Title": "HinhAnhPhongRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\HinhAnhPhongRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\HinhAnhPhongRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\HinhAnhPhongRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\HinhAnhPhongRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:21.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ITangRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITangRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITangRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITangRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ITangRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:31.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "LoginRepository.cs",
               "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\LoginRepository.cs",
               "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\LoginRepository.cs",
               "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\LoginRepository.cs",
               "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\LoginRepository.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAAAAYAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T04:23:39.11Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "NguoiDung.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T04:54:26.526Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:57:12.165Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "20251023114702_AddRefreshTokenTable.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:47:02.797Z"
+              "WhenOpened": "2025-11-10T08:34:20.845Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "20251023113601_CreateRefreshTokenTable.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:36:01.617Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "20251023113125_AddRefreshTokenTable.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T11:31:25.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20251021171440_InitialCreate.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAIBJwAEAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T17:14:40.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "QuenMatKhauController.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAuwC4AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T09:18:16.468Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "20251023083505_AddDatPhongTable.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T08:35:06.172Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DangKyRepository.cs",
-              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
-              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
-              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
-              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T09:35:58.716Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 8,
               "Title": "ILoginRepository.cs",
               "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ILoginRepository.cs",
               "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\IRepositories\\ILoginRepository.cs",
@@ -312,7 +309,172 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PhongRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\PhongRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\PhongRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\PhongRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\PhongRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:15.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DangKyRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\DangKyRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T09:35:58.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "QuenMatKhauRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\QuenMatKhauRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\QuenMatKhauRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\QuenMatKhauRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\QuenMatKhauRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:14.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TangRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TangRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TangRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TangRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TangRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:13.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TienNghiRepository.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TienNghiRepository.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TienNghiRepository.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TienNghiRepository.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\Repositories\\TienNghiRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:12.17Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UpdateHinhAnhPhongDTO.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\dto\\HinhAnhPhong\\UpdateHinhAnhPhongDTO.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Interfaces\\dto\\HinhAnhPhong\\UpdateHinhAnhPhongDTO.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Interfaces\\dto\\HinhAnhPhong\\UpdateHinhAnhPhongDTO.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Interfaces\\dto\\HinhAnhPhong\\UpdateHinhAnhPhongDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T08:34:08.023Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 19,
+              "Title": "NguoiDung.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Data\\Entities\\NguoiDung.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T04:54:26.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023115712_RenameRefreshTokensTableToRefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T11:57:12.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20251023114702_AddRefreshTokenTable.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023114702_AddRefreshTokenTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T11:47:02.797Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20251023113601_CreateRefreshTokenTable.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113601_CreateRefreshTokenTable.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T11:36:01.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20251023113125_AddRefreshTokenTable.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023113125_AddRefreshTokenTable.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T11:31:25.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20251021171440_InitialCreate.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251021171440_InitialCreate.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAIBJwAEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T17:14:40.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "QuenMatKhauController.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Controllers\\QuenMatKhauController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAuwC4AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T09:18:16.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "20251023083505_AddDatPhongTable.cs",
+              "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
+              "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
+              "ToolTip": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
+              "RelativeToolTip": "DoAnTotNghiep_KS_BE\\Migrations\\20251023083505_AddDatPhongTable.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T08:35:06.172Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
               "Title": "LoginController.cs",
               "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Controllers\\LoginController.cs",
@@ -324,7 +486,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 28,
               "Title": "DoAnTotNghiep_KS_BE.csproj",
               "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj",
               "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE.csproj",
@@ -336,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 26,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\appsettings.json",
               "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\appsettings.json",
@@ -348,7 +510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 27,
               "Title": "MyDbContext.cs",
               "DocumentMoniker": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\Data\\MyDbContext.cs",
               "RelativeDocumentMoniker": "DoAnTotNghiep_KS_BE\\Data\\MyDbContext.cs",

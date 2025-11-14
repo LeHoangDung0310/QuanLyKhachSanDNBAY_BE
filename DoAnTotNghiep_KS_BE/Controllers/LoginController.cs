@@ -1,4 +1,4 @@
-using DoAnTotNghiep_KS_BE.Interfaces.dto;
+using DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc;
 using DoAnTotNghiep_KS_BE.Interfaces.IRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,5 @@
 using DoAnTotNghiep_KS_BE.Data;
-using DoAnTotNghiep_KS_BE.Interfaces.dto;
+using DoAnTotNghiep_KS_BE.Interfaces.dto.XacThuc;
 using DoAnTotNghiep_KS_BE.Interfaces.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
