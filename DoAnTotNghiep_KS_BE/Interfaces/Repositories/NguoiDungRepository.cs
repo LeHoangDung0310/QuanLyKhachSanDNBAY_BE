@@ -121,17 +121,58 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
 
         public async Task<bool> UpdateNguoiDungAsync(int maNguoiDung, UpdateNguoiDungAdminDTO updateDTO)
         {
-            var nguoiDung = await _context.NguoiDungs.FindAsync(maNguoiDung);
-            if (nguoiDung == null) return false;
+            var nguoiDung = await _context.NguoiDungs.FirstOrDefaultAsync(n => n.MaNguoiDung == maNguoiDung);
+            if (nguoiDung == null)
+            {
+                return false;
+            }
 
-            // Cập nhật thông tin
-            if (updateDTO.HoTen != null) nguoiDung.HoTen = updateDTO.HoTen;
-            if (updateDTO.SoDienThoai != null) nguoiDung.SoDienThoai = updateDTO.SoDienThoai;
-            if (updateDTO.DiaChi != null) nguoiDung.DiaChi = updateDTO.DiaChi;
-            if (updateDTO.AnhDaiDien != null) nguoiDung.AnhDaiDien = updateDTO.AnhDaiDien;
-            if (updateDTO.VaiTro != null) nguoiDung.VaiTro = updateDTO.VaiTro;
-            if (updateDTO.TrangThai != null) nguoiDung.TrangThai = updateDTO.TrangThai;
+            // Cập nhật các trường nếu DTO có gửi lên (không ghi đè bằng null)
+            if (updateDTO.HoTen != null)
+            {
+                nguoiDung.HoTen = updateDTO.HoTen;
+            }
 
+            if (updateDTO.SoDienThoai != null)
+            {
+                nguoiDung.SoDienThoai = updateDTO.SoDienThoai;
+            }
+
+            if (updateDTO.DiaChi != null)
+            {
+                nguoiDung.DiaChi = updateDTO.DiaChi;
+            }
+
+            if (updateDTO.AnhDaiDien != null)
+            {
+                nguoiDung.AnhDaiDien = updateDTO.AnhDaiDien;
+            }
+
+            // Chuẩn hóa vai trò từ DTO -> giá trị lưu trong DB
+            if (updateDTO.VaiTro != null)
+            {
+                var norm = updateDTO.VaiTro.Trim().ToLower();
+
+                string? mappedRole = norm switch
+                {
+                    "admin"      => "Admin",
+                    "khachhang"  => "KhachHang",
+                    "letan"      => "LeTan",
+                    _            => null
+                };
+
+                if (mappedRole != null)
+                {
+                    nguoiDung.VaiTro = mappedRole;
+                }
+            }
+
+            if (updateDTO.TrangThai != null)
+            {
+                nguoiDung.TrangThai = updateDTO.TrangThai;
+            }
+
+            _context.NguoiDungs.Update(nguoiDung);
             await _context.SaveChangesAsync();
             return true;
         }

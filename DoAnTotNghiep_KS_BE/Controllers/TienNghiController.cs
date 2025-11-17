@@ -2,6 +2,9 @@ using DoAnTotNghiep_KS_BE.Interfaces.dto.TienNghi;
 using DoAnTotNghiep_KS_BE.Interfaces.IRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace DoAnTotNghiep_KS_BE.Controllers
 {
@@ -10,10 +13,12 @@ namespace DoAnTotNghiep_KS_BE.Controllers
     public class TienNghiController : ControllerBase
     {
         private readonly ITienNghiRepository _tienNghiRepository;
+        private readonly IWebHostEnvironment _env;
 
-        public TienNghiController(ITienNghiRepository tienNghiRepository)
+        public TienNghiController(ITienNghiRepository tienNghiRepository, IWebHostEnvironment env)
         {
             _tienNghiRepository = tienNghiRepository;
+            _env = env;
         }
 
         // GET: api/TienNghi
@@ -128,6 +133,55 @@ namespace DoAnTotNghiep_KS_BE.Controllers
             {
                 success = true,
                 message = "Xóa tiện nghi thành công"
+            });
+        }
+
+        // POST: api/tiennghi-icon
+        [HttpPost]
+        [Route("/api/tiennghi-icon")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UploadIconTienNghi(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "File không hợp lệ"
+                });
+            }
+
+            if (!file.ContentType.StartsWith("image/"))
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Chỉ hỗ trợ upload hình ảnh"
+                });
+            }
+
+            var uploadsFolder = Path.Combine(_env.WebRootPath ?? "wwwroot", "uploads", "tiennghi");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var ext = Path.GetExtension(file.FileName);
+            var fileName = $"{Guid.NewGuid()}{ext}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            await using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // URL trả về cho FE dùng hiển thị
+            var url = $"/uploads/tiennghi/{fileName}";
+
+            return Ok(new
+            {
+                success = true,
+                url
             });
         }
     }

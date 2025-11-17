@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\uploads\\tiennghi\\338eafe3-6200-4f8f-ac28-21c0f9d342b7.png",
+      "PackagePath": "staticwebassets\\uploads\\tiennghi\\338eafe3-6200-4f8f-ac28-21c0f9d342b7.png"
+    },
+    {
+      "Id": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\uploads\\tiennghi\\3d955600-6d67-41a3-8875-84857492f2f1.png",
+      "PackagePath": "staticwebassets\\uploads\\tiennghi\\3d955600-6d67-41a3-8875-84857492f2f1.png"
+    },
+    {
+      "Id": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\uploads\\tiennghi\\86bfd061-d0bd-4c57-9737-eba6345d8548.png",
+      "PackagePath": "staticwebassets\\uploads\\tiennghi\\86bfd061-d0bd-4c57-9737-eba6345d8548.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DoAnTotNghiep_KS_BE.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.DoAnTotNghiep_KS_BE.props",
+      "PackagePath": "build\\DoAnTotNghiep_KS_BE.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.DoAnTotNghiep_KS_BE.props",
+      "PackagePath": "buildMultiTargeting\\DoAnTotNghiep_KS_BE.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.DoAnTotNghiep_KS_BE.props",
+      "PackagePath": "buildTransitive\\DoAnTotNghiep_KS_BE.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

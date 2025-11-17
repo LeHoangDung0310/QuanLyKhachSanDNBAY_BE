@@ -31,70 +31,67 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
 
         public async Task<TienNghiDTO?> GetTienNghiByIdAsync(int maTienNghi)
         {
-            return await _context.TienNghis
+            var entity = await _context.TienNghis
                 .Include(t => t.Phong_TienNghis)
-                .Where(t => t.MaTienNghi == maTienNghi)
-                .Select(t => new TienNghiDTO
-                {
-                    MaTienNghi = t.MaTienNghi,
-                    Ten = t.Ten,
-                    Icon = t.Icon,
-                    SoPhongSuDung = t.Phong_TienNghis != null ? t.Phong_TienNghis.Count : 0
-                })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(t => t.MaTienNghi == maTienNghi);
+
+            if (entity == null) return null;
+
+            return new TienNghiDTO
+            {
+                MaTienNghi = entity.MaTienNghi,
+                Ten = entity.Ten,
+                Icon = entity.Icon,                 // đảm bảo lấy đúng trường Icon từ DB
+                SoPhongSuDung = entity.Phong_TienNghis?.Count ?? 0
+            };
         }
 
         public async Task<(IEnumerable<TienNghiDTO> data, int total)> SearchTienNghisAsync(SearchTienNghiDTO searchDTO)
         {
-            var query = _context.TienNghis.Include(t => t.Phong_TienNghis).AsQueryable();
+            var query = _context.TienNghis.AsQueryable();
+            // ... filter tên, phân trang ...
 
-            // Tìm kiếm theo tên tiện nghi
-            if (!string.IsNullOrWhiteSpace(searchDTO.Ten))
-            {
-                var ten = searchDTO.Ten.ToLower().Trim();
-                query = query.Where(t => t.Ten != null && t.Ten.ToLower().Contains(ten));
-            }
-
-            // Đếm tổng số bản ghi
             var total = await query.CountAsync();
 
-            // Phân trang
             var data = await query
-                .OrderBy(t => t.Ten)
+                .Include(t => t.Phong_TienNghis)
                 .Skip((searchDTO.PageNumber - 1) * searchDTO.PageSize)
                 .Take(searchDTO.PageSize)
                 .Select(t => new TienNghiDTO
                 {
                     MaTienNghi = t.MaTienNghi,
                     Ten = t.Ten,
-                    Icon = t.Icon,
-                    SoPhongSuDung = t.Phong_TienNghis != null ? t.Phong_TienNghis.Count : 0
+                    Icon = t.Icon,                   // <- chỗ này
+                    SoPhongSuDung = t.Phong_TienNghis!.Count
                 })
                 .ToListAsync();
 
             return (data, total);
         }
 
-        public async Task<TienNghi> CreateTienNghiAsync(CreateTienNghiDTO createTienNghiDTO)
+        public async Task<TienNghi> CreateTienNghiAsync(CreateTienNghiDTO dto)
         {
-            var tienNghi = new TienNghi
+            var entity = new TienNghi
             {
-                Ten = createTienNghiDTO.Ten,
-                Icon = createTienNghiDTO.Icon
+                Ten = dto.Ten,
+                Icon = dto.Icon      // dto.Icon chính là "/uploads/tiennghi/xxx.png"
             };
 
-            _context.TienNghis.Add(tienNghi);
+            _context.TienNghis.Add(entity);
             await _context.SaveChangesAsync();
-            return tienNghi;
+            return entity;
         }
 
-        public async Task<bool> UpdateTienNghiAsync(int maTienNghi, UpdateTienNghiDTO updateTienNghiDTO)
+        public async Task<bool> UpdateTienNghiAsync(int id, UpdateTienNghiDTO dto)
         {
-            var tienNghi = await _context.TienNghis.FindAsync(maTienNghi);
-            if (tienNghi == null) return false;
+            var entity = await _context.TienNghis.FindAsync(id);
+            if (entity == null) return false;
 
-            if (updateTienNghiDTO.Ten != null) tienNghi.Ten = updateTienNghiDTO.Ten;
-            if (updateTienNghiDTO.Icon != null) tienNghi.Icon = updateTienNghiDTO.Icon;
+            entity.Ten = dto.Ten;
+            if (dto.Icon != null)      // cho phép giữ icon cũ nếu FE gửi null
+            {
+                entity.Icon = dto.Icon;
+            }
 
             await _context.SaveChangesAsync();
             return true;

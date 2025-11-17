@@ -19,7 +19,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung
         public string? AnhDaiDien { get; set; }
 
         [StringLength(20)]
-        [RegularExpression("^(Admin|KhachHang|NhanVien)$", ErrorMessage = "Vai trò phải là Admin, KhachHang hoặc NhanVien")]
+        [RegularExpression("(Admin|KhachHang|LeTan)", ErrorMessage = "Vai trò phải là Admin, KhachHang hoặc LeTan")]
         public string? VaiTro { get; set; }
 
         [StringLength(20)]

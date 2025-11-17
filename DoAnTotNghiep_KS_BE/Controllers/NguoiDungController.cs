@@ -134,18 +134,23 @@ namespace DoAnTotNghiep_KS_BE.Controllers
 
             var currentUserId = int.Parse(currentUserIdClaim.Value);
 
-            // Không cho phép tự thay đổi vai trò của chính mình
-            if (id == currentUserId && updateDTO.VaiTro != null)
+            // Nếu admin đang chỉnh sửa CHÍNH MÌNH
+            if (id == currentUserId)
             {
-                return BadRequest(new { message = "Không thể tự thay đổi vai trò của chính mình" });
+                // Chặn đổi vai trò của chính mình
+                if (!string.IsNullOrWhiteSpace(updateDTO.VaiTro))
+                {
+                    return BadRequest(new { message = "Không thể tự thay đổi vai trò của chính mình" });
+                }
+
+                // Chặn tự khóa tài khoản của chính mình
+                if (string.Equals(updateDTO.TrangThai, "Tạm khóa", StringComparison.OrdinalIgnoreCase))
+                {
+                    return BadRequest(new { message = "Không thể tự khóa tài khoản của chính mình" });
+                }
             }
 
-            // Không cho phép tự khóa tài khoản của chính mình
-            if (id == currentUserId && updateDTO.TrangThai == "Tạm khóa")
-            {
-                return BadRequest(new { message = "Không thể tự khóa tài khoản của chính mình" });
-            }
-
+            // Với người khác thì cho đổi thoải mái (trong repo sẽ update theo giá trị có trong DTO)
             var result = await _nguoiDungRepository.UpdateNguoiDungAsync(id, updateDTO);
             if (!result)
             {

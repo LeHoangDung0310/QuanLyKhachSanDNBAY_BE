@@ -1,11 +1,77 @@
 {
   "Version": 1,
-  "Hash": "tNrAGgrL4Yn3gG+7NuCtj6EDtLZSSCxksiFnGRG2G9k=",
+  "Hash": "Ey7rfafspNn1z/7vtcgGY4JThpVDSks7HFMPnO0mdQc=",
   "Source": "DoAnTotNghiep_KS_BE",
   "BasePath": "_content/DoAnTotNghiep_KS_BE",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "DoAnTotNghiep_KS_BE\\wwwroot",
+      "Source": "DoAnTotNghiep_KS_BE",
+      "ContentRoot": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\",
+      "BasePath": "_content/DoAnTotNghiep_KS_BE",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\uploads\\tiennghi\\338eafe3-6200-4f8f-ac28-21c0f9d342b7.png",
+      "SourceId": "DoAnTotNghiep_KS_BE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\",
+      "BasePath": "_content/DoAnTotNghiep_KS_BE",
+      "RelativePath": "uploads/tiennghi/338eafe3-6200-4f8f-ac28-21c0f9d342b7.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\tiennghi\\338eafe3-6200-4f8f-ac28-21c0f9d342b7.png"
+    },
+    {
+      "Identity": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\uploads\\tiennghi\\3d955600-6d67-41a3-8875-84857492f2f1.png",
+      "SourceId": "DoAnTotNghiep_KS_BE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\",
+      "BasePath": "_content/DoAnTotNghiep_KS_BE",
+      "RelativePath": "uploads/tiennghi/3d955600-6d67-41a3-8875-84857492f2f1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\tiennghi\\3d955600-6d67-41a3-8875-84857492f2f1.png"
+    },
+    {
+      "Identity": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\uploads\\tiennghi\\86bfd061-d0bd-4c57-9737-eba6345d8548.png",
+      "SourceId": "DoAnTotNghiep_KS_BE",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAnTotNghiep_KS\\DoAnTotNghiep_KS_BE\\DoAnTotNghiep_KS_BE\\wwwroot\\",
+      "BasePath": "_content/DoAnTotNghiep_KS_BE",
+      "RelativePath": "uploads/tiennghi/86bfd061-d0bd-4c57-9737-eba6345d8548.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\tiennghi\\86bfd061-d0bd-4c57-9737-eba6345d8548.png"
+    }
+  ]
 }
