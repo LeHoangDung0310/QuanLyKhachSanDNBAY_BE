@@ -24,6 +24,9 @@ namespace DoAnTotNghiep_KS_BE.Data
 		public DbSet<HoanTien> HoanTiens { get; set; }
 		public DbSet<DanhGia> DanhGias { get; set; }
 		public DbSet<RefreshToken> RefreshTokens { get; set; }
+		public DbSet<Tinh> Tinhs { get; set; }
+		public DbSet<Huyen> Huyens { get; set; }
+		public DbSet<PhuongXa> PhuongXas { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -79,17 +82,17 @@ namespace DoAnTotNghiep_KS_BE.Data
 					.IsUnique();
 			});
 
-			// Cấu hình quan hệ HuyDatPhong với NguoiDung (tránh multiple cascade paths)
+			// Cấu hình quan hệ HuyDatPhong - NguoiDung
 			modelBuilder.Entity<HuyDatPhong>()
 				.HasOne(h => h.KhachHang)
-				.WithMany(n => n.HuyDatPhongsKhachHang)
+				.WithMany() // Không có collection trong NguoiDung
 				.HasForeignKey(h => h.MaKhachHang)
 				.OnDelete(DeleteBehavior.Restrict);
 
 			modelBuilder.Entity<HuyDatPhong>()
-				.HasOne(h => h.NhanVienDuyet)
-				.WithMany(n => n.HuyDatPhongsNhanVien)
-				.HasForeignKey(h => h.MaNhanVienDuyet)
+				.HasOne(h => h.NguoiDuyet)
+				.WithMany() // Không có collection trong NguoiDung
+				.HasForeignKey(h => h.MaNguoiDuyet)
 				.OnDelete(DeleteBehavior.Restrict);
 
 			// Cấu hình quan hệ HoanTien với NguoiDung

@@ -12,11 +12,9 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung
         public string? SoDienThoai { get; set; }
 
         [StringLength(255)]
-        public string? DiaChi { get; set; }
+        public string? DiaChiChiTiet { get; set; }
 
-        [StringLength(255)]
-        [Url(ErrorMessage = "URL ảnh đại diện không hợp lệ")]
-        public string? AnhDaiDien { get; set; }
+        public int? MaPhuongXa { get; set; }
 
         [StringLength(20)]
         [RegularExpression("(Admin|KhachHang|LeTan)", ErrorMessage = "Vai trò phải là Admin, KhachHang hoặc LeTan")]

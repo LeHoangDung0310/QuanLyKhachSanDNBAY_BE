@@ -1,5 +1,21 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\tiennghi\22eea4d2-9e70-47e2-8f4c-41e66d65b43c.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>DoAnTotNghiep_KS_BE</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/DoAnTotNghiep_KS_BE</BasePath>
+      <RelativePath>uploads/tiennghi/22eea4d2-9e70-47e2-8f4c-41e66d65b43c.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\tiennghi\22eea4d2-9e70-47e2-8f4c-41e66d65b43c.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\tiennghi\338eafe3-6200-4f8f-ac28-21c0f9d342b7.png))">
       <SourceType>Package</SourceType>
       <SourceId>DoAnTotNghiep_KS_BE</SourceId>
@@ -31,6 +47,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\tiennghi\3d955600-6d67-41a3-8875-84857492f2f1.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\tiennghi\40b94885-3ad8-4499-a69e-a7f36af0eeb6.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>DoAnTotNghiep_KS_BE</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/DoAnTotNghiep_KS_BE</BasePath>
+      <RelativePath>uploads/tiennghi/40b94885-3ad8-4499-a69e-a7f36af0eeb6.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\tiennghi\40b94885-3ad8-4499-a69e-a7f36af0eeb6.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\tiennghi\86bfd061-d0bd-4c57-9737-eba6345d8548.png))">
       <SourceType>Package</SourceType>

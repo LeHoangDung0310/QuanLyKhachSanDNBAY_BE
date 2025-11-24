@@ -8,7 +8,6 @@ namespace DoAnTotNghiep_KS_BE.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
     public class NguoiDungController : ControllerBase
     {
         private readonly INguoiDungRepository _nguoiDungRepository;
@@ -227,6 +226,154 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 success = true,
                 data = statistics
             });
+        }
+
+        // GET: api/NguoiDung/Profile/Me
+        [HttpGet("Profile/Me")]
+        [Authorize]
+        public async Task<ActionResult> GetMyProfile()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { message = "Không xác thực được người dùng" });
+            }
+
+            var nguoiDung = await _nguoiDungRepository.GetNguoiDungByIdAsync(userId);
+            if (nguoiDung == null)
+            {
+                return NotFound(new { message = "Không tìm thấy thông tin người dùng" });
+            }
+
+            return Ok(new { success = true, data = nguoiDung });
+        }
+
+        // PUT: api/NguoiDung/Profile/Me
+        [HttpPut("Profile/Me")]
+        [Authorize]
+        public async Task<ActionResult> UpdateMyProfile([FromBody] UpdateProfileDTO updateDTO)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { message = "Không xác thực được người dùng" });
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { message = "Dữ liệu không hợp lệ", errors = ModelState });
+            }
+
+            var result = await _nguoiDungRepository.UpdateProfileAsync(userId, updateDTO);
+            if (!result)
+            {
+                return BadRequest(new { message = "Cập nhật thông tin thất bại" });
+            }
+
+            return Ok(new { success = true, message = "Cập nhật thông tin thành công" });
+        }
+
+        // PUT: api/NguoiDung/Profile/ChangePassword
+        [HttpPut("Profile/ChangePassword")]
+        [Authorize]
+        public async Task<ActionResult> ChangePassword([FromBody] ChangePasswordDTO changePasswordDTO)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { message = "Không xác thực được người dùng" });
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { message = "Dữ liệu không hợp lệ", errors = ModelState });
+            }
+
+            var (success, message) = await _nguoiDungRepository.ChangePasswordAsync(userId, changePasswordDTO);
+
+            if (!success)
+            {
+                return BadRequest(new { message });
+            }
+
+            return Ok(new { success = true, message });
+        }
+
+        // POST: api/NguoiDung/Profile/UploadAvatar
+        [HttpPost("Profile/UploadAvatar")]
+        [Authorize]
+        public async Task<ActionResult> UploadAvatar([FromForm] IFormFile file)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { message = "Không xác thực được người dùng" });
+            }
+
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest(new { message = "Vui lòng chọn file ảnh" });
+            }
+
+            // Validate file type
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+            var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            if (!allowedExtensions.Contains(extension))
+            {
+                return BadRequest(new { message = "Chỉ chấp nhận file ảnh (jpg, jpeg, png, gif)" });
+            }
+
+            // Validate file size (5MB)
+            if (file.Length > 5 * 1024 * 1024)
+            {
+                return BadRequest(new { message = "Kích thước file tối đa 5MB" });
+            }
+
+            try
+            {
+                // Tạo thư mục lưu ảnh nếu chưa có
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "avatars");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                // Tạo tên file unique
+                var fileName = $"{userId}_{Guid.NewGuid()}{extension}";
+                var filePath = Path.Combine(uploadsFolder, fileName);
+
+                // Lưu file
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                // Cập nhật đường dẫn ảnh vào database
+                var avatarUrl = $"/uploads/avatars/{fileName}";
+                var result = await _nguoiDungRepository.UpdateAvatarAsync(userId, avatarUrl);
+
+                if (!result)
+                {
+                    // Xóa file nếu update DB thất bại
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                    return BadRequest(new { message = "Cập nhật ảnh đại diện thất bại" });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "Upload ảnh đại diện thành công",
+                    avatarUrl = avatarUrl
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error uploading avatar: {ex.Message}");
+                return StatusCode(500, new { message = "Có lỗi xảy ra khi upload ảnh" });
+            }
         }
     }
 }

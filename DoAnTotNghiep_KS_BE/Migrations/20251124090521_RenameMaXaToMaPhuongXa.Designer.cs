@@ -4,6 +4,7 @@ using DoAnTotNghiep_KS_BE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoAnTotNghiep_KS_BE.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251124090521_RenameMaXaToMaPhuongXa")]
+    partial class RenameMaXaToMaPhuongXa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,7 +174,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaHuyDatPhong"));
 
-                    b.Property<string>("GhiChuNguoiDuyet")
+                    b.Property<string>("GhiChuLeTan")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -185,7 +188,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.Property<int>("MaKhachHang")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MaNguoiDuyet")
+                    b.Property<int?>("MaNhanVienDuyet")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("NgayXuLy")
@@ -220,7 +223,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
 
                     b.HasIndex("MaKhachHang");
 
-                    b.HasIndex("MaNguoiDuyet");
+                    b.HasIndex("MaNhanVienDuyet");
 
                     b.ToTable("HuyDatPhong");
                 });
@@ -662,21 +665,21 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                         .IsRequired();
 
                     b.HasOne("DoAnTotNghiep_KS_BE.Data.Entities.NguoiDung", "KhachHang")
-                        .WithMany()
+                        .WithMany("HuyDatPhongsKhachHang")
                         .HasForeignKey("MaKhachHang")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DoAnTotNghiep_KS_BE.Data.Entities.NguoiDung", "NguoiDuyet")
-                        .WithMany()
-                        .HasForeignKey("MaNguoiDuyet")
+                    b.HasOne("DoAnTotNghiep_KS_BE.Data.Entities.NguoiDung", "NhanVienDuyet")
+                        .WithMany("HuyDatPhongsNhanVien")
+                        .HasForeignKey("MaNhanVienDuyet")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("DatPhong");
 
                     b.Navigation("KhachHang");
 
-                    b.Navigation("NguoiDuyet");
+                    b.Navigation("NhanVienDuyet");
                 });
 
             modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.Huyen", b =>
@@ -797,6 +800,10 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.Navigation("DatPhongs");
 
                     b.Navigation("HoanTiens");
+
+                    b.Navigation("HuyDatPhongsKhachHang");
+
+                    b.Navigation("HuyDatPhongsNhanVien");
 
                     b.Navigation("OTPs");
 

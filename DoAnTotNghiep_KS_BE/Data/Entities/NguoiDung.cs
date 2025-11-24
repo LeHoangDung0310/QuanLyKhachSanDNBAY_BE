@@ -30,7 +30,9 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         public string? SoDienThoai { get; set; }
 
         [StringLength(255)]
-        public string? DiaChi { get; set; }
+        public string? DiaChiChiTiet { get; set; }
+
+        public int? MaPhuongXa { get; set; }
 
         [StringLength(255)]
         public string? AnhDaiDien { get; set; }
@@ -41,12 +43,17 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         public DateTime NgayTao { get; set; } = DateTime.Now;
 
         // Navigation properties
+        [ForeignKey("MaPhuongXa")]
+        public virtual PhuongXa? PhuongXa { get; set; }
+
         public virtual ICollection<OTP>? OTPs { get; set; }
         public virtual ICollection<DatPhong>? DatPhongs { get; set; }
-        public virtual ICollection<HuyDatPhong>? HuyDatPhongsKhachHang { get; set; }
-        public virtual ICollection<HuyDatPhong>? HuyDatPhongsNhanVien { get; set; }
+
+        // BỎ 2 collection HuyDatPhongs - không cần thiết
+        // Nếu cần query, dùng: context.HuyDatPhongs.Where(h => h.MaKhachHang == userId)
+
         public virtual ICollection<HoanTien>? HoanTiens { get; set; }
         public virtual ICollection<DanhGia>? DanhGias { get; set; }
-        public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
+        public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

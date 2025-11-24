@@ -12,5 +12,10 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
         Task<bool> DeleteNguoiDungAsync(int maNguoiDung);
         Task<bool> NguoiDungExistsAsync(int maNguoiDung);
         Task<bool> CanDeleteNguoiDungAsync(int maNguoiDung);
+
+        // Profile methods
+        Task<bool> UpdateProfileAsync(int maNguoiDung, UpdateProfileDTO updateDTO);
+        Task<(bool Success, string Message)> ChangePasswordAsync(int maNguoiDung, ChangePasswordDTO changePasswordDTO);
+        Task<bool> UpdateAvatarAsync(int maNguoiDung, string avatarUrl);
     }
 }

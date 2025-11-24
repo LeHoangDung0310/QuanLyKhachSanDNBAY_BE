@@ -13,15 +13,12 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         public int MaHuyDatPhong { get; set; }
 
         [Required]
-        [ForeignKey("DatPhong")]
         public int MaDatPhong { get; set; }
 
         [Required]
-        [ForeignKey("KhachHang")]
         public int MaKhachHang { get; set; }
 
-        [ForeignKey("NhanVienDuyet")]
-        public int? MaNhanVienDuyet { get; set; }
+        public int? MaNguoiDuyet { get; set; }
 
         public DateTime NgayYeuCau { get; set; } = DateTime.Now;
 
@@ -46,12 +43,18 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         public string? TenChuTaiKhoan { get; set; }
 
         [StringLength(255)]
-        public string? GhiChuLeTan { get; set; }
+        public string? GhiChuNguoiDuyet { get; set; }
 
-        // Navigation properties
+        // Navigation properties - GIỮ REFERENCE ĐƠN GIẢN
+        [ForeignKey("MaDatPhong")]
         public virtual DatPhong? DatPhong { get; set; }
+
+        [ForeignKey("MaKhachHang")]
         public virtual NguoiDung? KhachHang { get; set; }
-        public virtual NguoiDung? NhanVienDuyet { get; set; }
+
+        [ForeignKey("MaNguoiDuyet")]
+        public virtual NguoiDung? NguoiDuyet { get; set; }
+
         public virtual ICollection<HoanTien>? HoanTiens { get; set; }
     }
 }
