@@ -22,12 +22,15 @@ builder.Services.AddScoped<IDangKyRepository, DangKyRepository>();
 builder.Services.AddScoped<IQuenMatKhauRepository, QuenMatKhauRepository>();
 builder.Services.AddScoped<INguoiDungRepository, NguoiDungRepository>();
 
+// Thêm dòng này - đã có nhưng cần kiểm tra lại
+builder.Services.AddScoped<ILoaiPhongRepository, LoaiPhongRepository>();
+
 // Đăng ký services
 builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Thêm vào phần đăng ký services
 builder.Services.AddScoped<ITienNghiRepository, TienNghiRepository>();
-builder.Services.AddScoped<IHinhAnhPhongRepository, HinhAnhPhongRepository>();
+builder.Services.AddScoped<IHinhAnhLPhongRepository, HinhAnhLPhongRepository>();
 builder.Services.AddScoped<IPhongRepository, PhongRepository>();
 builder.Services.AddScoped<ITangRepository, TangRepository>();
 

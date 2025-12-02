@@ -14,22 +14,11 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [StringLength(10)]
         public string? SoPhong { get; set; }
 
-        [StringLength(100)]
-        public string? TenLoai { get; set; }
-
-        public int? DienTich { get; set; }
-
         public int? SoGiuong { get; set; }
 
         public int? SoNguoiToiDa { get; set; }
 
-        [StringLength(100)]
-        public string? HuongNhin { get; set; }
-
         public string? MoTa { get; set; }
-
-        [Column(TypeName = "decimal(12,2)")]
-        public decimal? GiaMoiDem { get; set; }
 
         [StringLength(20)]
         public string TrangThai { get; set; } = "Trong";
@@ -37,11 +26,13 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [ForeignKey("Tang")]
         public int? MaTang { get; set; }
 
+        [ForeignKey("LoaiPhong")]
+        public int? MaLoaiPhong { get; set; }
+
         // Navigation properties
         public virtual Tang? Tang { get; set; }
+        public virtual LoaiPhong? LoaiPhong { get; set; }
         public virtual ICollection<Phong_TienNghi>? Phong_TienNghis { get; set; }
-        public virtual ICollection<HinhAnhPhong>? HinhAnhPhongs { get; set; }
         public virtual ICollection<DatPhong_Phong>? DatPhong_Phongs { get; set; }
-        public virtual ICollection<DanhGia>? DanhGias { get; set; }
     }
 }

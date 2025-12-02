@@ -15,8 +15,11 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [ForeignKey("KhachHang")]
         public int MaKhachHang { get; set; }
 
-        [ForeignKey("Phong")]
-        public int? MaPhong { get; set; }
+        [ForeignKey("LoaiPhong")]
+        public int? MaLoaiPhong { get; set; }
+
+        [ForeignKey("DatPhong")]
+        public int? MaDatPhong { get; set; }
 
         [Range(1, 5)]
         public int? Diem { get; set; }
@@ -27,6 +30,7 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
 
         // Navigation properties
         public virtual NguoiDung? KhachHang { get; set; }
-        public virtual Phong? Phong { get; set; }
+        public virtual LoaiPhong? LoaiPhong { get; set; }
+        public virtual DatPhong? DatPhong { get; set; }
     }
 }

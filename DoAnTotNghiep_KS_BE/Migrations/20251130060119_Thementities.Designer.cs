@@ -4,6 +4,7 @@ using DoAnTotNghiep_KS_BE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoAnTotNghiep_KS_BE.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251130060119_Thementities")]
+    partial class Thementities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,7 +118,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.ToTable("DatPhong_Phong");
                 });
 
-            modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.HinhAnhLPhong", b =>
+            modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.HinhAnhPhong", b =>
                 {
                     b.Property<int>("MaHinhAnh")
                         .ValueGeneratedOnAdd()
@@ -134,7 +137,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
 
                     b.HasIndex("MaLoaiPhong");
 
-                    b.ToTable("HinhAnhLPhong");
+                    b.ToTable("HinhAnhPhong");
                 });
 
             modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.HoanTien", b =>
@@ -694,10 +697,10 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.Navigation("Phong");
                 });
 
-            modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.HinhAnhLPhong", b =>
+            modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.HinhAnhPhong", b =>
                 {
                     b.HasOne("DoAnTotNghiep_KS_BE.Data.Entities.LoaiPhong", "LoaiPhong")
-                        .WithMany("HinhAnhLPhongs")
+                        .WithMany("HinhAnhPhongs")
                         .HasForeignKey("MaLoaiPhong")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -876,7 +879,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                 {
                     b.Navigation("DanhGias");
 
-                    b.Navigation("HinhAnhLPhongs");
+                    b.Navigation("HinhAnhPhongs");
 
                     b.Navigation("Phongs");
                 });

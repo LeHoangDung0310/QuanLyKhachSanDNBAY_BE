@@ -19,20 +19,19 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
         {
             return await _context.Phongs
                 .Include(p => p.Tang)
+                .Include(p => p.LoaiPhong)
                 .Select(p => new PhongDTO
                 {
                     MaPhong = p.MaPhong,
                     SoPhong = p.SoPhong,
-                    TenLoai = p.TenLoai,
-                    DienTich = p.DienTich,
                     SoGiuong = p.SoGiuong,
                     SoNguoiToiDa = p.SoNguoiToiDa,
-                    HuongNhin = p.HuongNhin,
                     MoTa = p.MoTa,
-                    GiaMoiDem = p.GiaMoiDem,
                     TrangThai = p.TrangThai,
                     MaTang = p.MaTang,
-                    TenTang = p.Tang != null ? p.Tang.TenTang : null
+                    TenTang = p.Tang != null ? p.Tang.TenTang : null,
+                    MaLoaiPhong = p.MaLoaiPhong,
+                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null
                 })
                 .ToListAsync();
         }
@@ -41,28 +40,30 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
         {
             return await _context.Phongs
                 .Include(p => p.Tang)
+                .Include(p => p.LoaiPhong)
                 .Where(p => p.MaPhong == maPhong)
                 .Select(p => new PhongDTO
                 {
                     MaPhong = p.MaPhong,
                     SoPhong = p.SoPhong,
-                    TenLoai = p.TenLoai,
-                    DienTich = p.DienTich,
                     SoGiuong = p.SoGiuong,
                     SoNguoiToiDa = p.SoNguoiToiDa,
-                    HuongNhin = p.HuongNhin,
                     MoTa = p.MoTa,
-                    GiaMoiDem = p.GiaMoiDem,
                     TrangThai = p.TrangThai,
                     MaTang = p.MaTang,
-                    TenTang = p.Tang != null ? p.Tang.TenTang : null
+                    TenTang = p.Tang != null ? p.Tang.TenTang : null,
+                    MaLoaiPhong = p.MaLoaiPhong,
+                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null
                 })
                 .FirstOrDefaultAsync();
         }
 
         public async Task<(IEnumerable<PhongDTO> data, int total)> SearchPhongsAsync(SearchPhongDTO searchDTO)
         {
-            var query = _context.Phongs.Include(p => p.Tang).AsQueryable();
+            var query = _context.Phongs
+                .Include(p => p.Tang)
+                .Include(p => p.LoaiPhong)
+                .AsQueryable();
 
             // Tìm kiếm theo số phòng
             if (!string.IsNullOrWhiteSpace(searchDTO.SoPhong))
@@ -71,11 +72,10 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 query = query.Where(p => p.SoPhong != null && p.SoPhong.ToLower().Contains(soPhong));
             }
 
-            // Tìm kiếm theo tên loại
-            if (!string.IsNullOrWhiteSpace(searchDTO.TenLoai))
+            // Lọc theo loại phòng
+            if (searchDTO.MaLoaiPhong.HasValue)
             {
-                var tenLoai = searchDTO.TenLoai.ToLower().Trim();
-                query = query.Where(p => p.TenLoai != null && p.TenLoai.ToLower().Contains(tenLoai));
+                query = query.Where(p => p.MaLoaiPhong == searchDTO.MaLoaiPhong.Value);
             }
 
             // Lọc theo số giường
@@ -96,16 +96,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             if (searchDTO.SoNguoiToiDaMax.HasValue)
             {
                 query = query.Where(p => p.SoNguoiToiDa <= searchDTO.SoNguoiToiDaMax.Value);
-            }
-
-            // Lọc theo giá
-            if (searchDTO.GiaMin.HasValue)
-            {
-                query = query.Where(p => p.GiaMoiDem >= searchDTO.GiaMin.Value);
-            }
-            if (searchDTO.GiaMax.HasValue)
-            {
-                query = query.Where(p => p.GiaMoiDem <= searchDTO.GiaMax.Value);
             }
 
             // Lọc theo trạng thái
@@ -132,16 +122,14 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 {
                     MaPhong = p.MaPhong,
                     SoPhong = p.SoPhong,
-                    TenLoai = p.TenLoai,
-                    DienTich = p.DienTich,
                     SoGiuong = p.SoGiuong,
                     SoNguoiToiDa = p.SoNguoiToiDa,
-                    HuongNhin = p.HuongNhin,
                     MoTa = p.MoTa,
-                    GiaMoiDem = p.GiaMoiDem,
                     TrangThai = p.TrangThai,
                     MaTang = p.MaTang,
-                    TenTang = p.Tang != null ? p.Tang.TenTang : null
+                    TenTang = p.Tang != null ? p.Tang.TenTang : null,
+                    MaLoaiPhong = p.MaLoaiPhong,
+                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null
                 })
                 .ToListAsync();
 
@@ -153,14 +141,11 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             var phong = new Phong
             {
                 SoPhong = createPhongDTO.SoPhong,
-                TenLoai = createPhongDTO.TenLoai,
-                DienTich = createPhongDTO.DienTich,
                 SoGiuong = createPhongDTO.SoGiuong,
                 SoNguoiToiDa = createPhongDTO.SoNguoiToiDa,
-                HuongNhin = createPhongDTO.HuongNhin,
                 MoTa = createPhongDTO.MoTa,
-                GiaMoiDem = createPhongDTO.GiaMoiDem,
                 MaTang = createPhongDTO.MaTang,
+                MaLoaiPhong = createPhongDTO.MaLoaiPhong,
                 TrangThai = "Trong"
             };
 
@@ -175,15 +160,12 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             if (phong == null) return false;
 
             if (updatePhongDTO.SoPhong != null) phong.SoPhong = updatePhongDTO.SoPhong;
-            if (updatePhongDTO.TenLoai != null) phong.TenLoai = updatePhongDTO.TenLoai;
-            if (updatePhongDTO.DienTich.HasValue) phong.DienTich = updatePhongDTO.DienTich;
             if (updatePhongDTO.SoGiuong.HasValue) phong.SoGiuong = updatePhongDTO.SoGiuong;
             if (updatePhongDTO.SoNguoiToiDa.HasValue) phong.SoNguoiToiDa = updatePhongDTO.SoNguoiToiDa;
-            if (updatePhongDTO.HuongNhin != null) phong.HuongNhin = updatePhongDTO.HuongNhin;
             if (updatePhongDTO.MoTa != null) phong.MoTa = updatePhongDTO.MoTa;
-            if (updatePhongDTO.GiaMoiDem.HasValue) phong.GiaMoiDem = updatePhongDTO.GiaMoiDem;
             if (updatePhongDTO.TrangThai != null) phong.TrangThai = updatePhongDTO.TrangThai;
             if (updatePhongDTO.MaTang.HasValue) phong.MaTang = updatePhongDTO.MaTang;
+            if (updatePhongDTO.MaLoaiPhong.HasValue) phong.MaLoaiPhong = updatePhongDTO.MaLoaiPhong;
 
             await _context.SaveChangesAsync();
             return true;

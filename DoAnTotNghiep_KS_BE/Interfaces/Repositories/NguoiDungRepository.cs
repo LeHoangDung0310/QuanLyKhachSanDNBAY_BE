@@ -311,8 +311,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             var hasDatPhong = await _context.DatPhongs.AnyAsync(d => d.MaKhachHang == maNguoiDung);
             if (hasDatPhong) return false;
 
-            var hasHuyDatPhong = await _context.HuyDatPhongs.AnyAsync(h =>
-                h.MaKhachHang == maNguoiDung || h.MaNguoiDuyet == maNguoiDung); // ĐỔI TỪ MaNhanVienDuyet
+            var hasHuyDatPhong = await _context.HuyDatPhongs.AnyAsync(h => h.MaNguoiDuyet == maNguoiDung);
             if (hasHuyDatPhong) return false;
 
             var hasHoanTien = await _context.HoanTiens.AnyAsync(h => h.MaQuanTri == maNguoiDung);

@@ -42,18 +42,29 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
 
         public DateTime NgayTao { get; set; } = DateTime.Now;
 
+        [StringLength(20)]
+        public string? SoCCCD { get; set; }
+
+        public DateTime? NgayCapCCCD { get; set; }
+
+        [StringLength(200)]
+        public string? NoiCapCCCD { get; set; }
+
+        public DateTime? NgaySinh { get; set; }
+
+        [StringLength(10)]
+        public string? GioiTinh { get; set; }
+
         // Navigation properties
         [ForeignKey("MaPhuongXa")]
         public virtual PhuongXa? PhuongXa { get; set; }
 
         public virtual ICollection<OTP>? OTPs { get; set; }
         public virtual ICollection<DatPhong>? DatPhongs { get; set; }
-
-        // BỎ 2 collection HuyDatPhongs - không cần thiết
-        // Nếu cần query, dùng: context.HuyDatPhongs.Where(h => h.MaKhachHang == userId)
-
-        public virtual ICollection<HoanTien>? HoanTiens { get; set; }
+        public virtual ICollection<HuyDatPhong>? HuyDatPhongs_NguoiDuyet { get; set; }
+        public virtual ICollection<HoanTien>? HoanTiens_QuanTri { get; set; }
         public virtual ICollection<DanhGia>? DanhGias { get; set; }
+        public virtual ICollection<TaiKhoanNganHang>? TaiKhoanNganHangs { get; set; }
         public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

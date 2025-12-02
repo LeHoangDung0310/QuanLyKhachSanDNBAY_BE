@@ -33,13 +33,11 @@ namespace DoAnTotNghiep_KS_BE.Controllers
         [HttpGet("Search")]
         public async Task<ActionResult> SearchPhongs(
             [FromQuery] string? soPhong,
-            [FromQuery] string? tenLoai,
+            [FromQuery] int? maLoaiPhong,
             [FromQuery] int? soGiuongMin,
             [FromQuery] int? soGiuongMax,
             [FromQuery] int? soNguoiToiDaMin,
             [FromQuery] int? soNguoiToiDaMax,
-            [FromQuery] decimal? giaMin,
-            [FromQuery] decimal? giaMax,
             [FromQuery] string? trangThai,
             [FromQuery] int? maTang,
             [FromQuery] int pageNumber = 1,
@@ -75,25 +73,14 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 return BadRequest(new { message = "Số người tối đa tối đa phải >= số người tối đa tối thiểu" });
             }
 
-            if (giaMin.HasValue && giaMin.Value < 0)
-            {
-                return BadRequest(new { message = "Giá tối thiểu phải >= 0" });
-            }
-            if (giaMax.HasValue && giaMin.HasValue && giaMax.Value < giaMin.Value)
-            {
-                return BadRequest(new { message = "Giá tối đa phải >= giá tối thiểu" });
-            }
-
             var searchDTO = new SearchPhongDTO
             {
                 SoPhong = soPhong,
-                TenLoai = tenLoai,
+                MaLoaiPhong = maLoaiPhong,
                 SoGiuongMin = soGiuongMin,
                 SoGiuongMax = soGiuongMax,
                 SoNguoiToiDaMin = soNguoiToiDaMin,
                 SoNguoiToiDaMax = soNguoiToiDaMax,
-                GiaMin = giaMin,
-                GiaMax = giaMax,
                 TrangThai = trangThai,
                 MaTang = maTang,
                 PageNumber = pageNumber,
