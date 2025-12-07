@@ -18,6 +18,10 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [ForeignKey("Phong")]
         public int MaPhong { get; set; }
 
+        [Required]
+        [Range(1, 10)]
+        public int SoNguoi { get; set; } = 1;
+
         // Navigation properties
         public virtual DatPhong? DatPhong { get; set; }
         public virtual Phong? Phong { get; set; }

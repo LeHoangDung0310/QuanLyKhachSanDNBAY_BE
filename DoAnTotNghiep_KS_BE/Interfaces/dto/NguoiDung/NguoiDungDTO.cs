@@ -17,5 +17,12 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung
         public string? AnhDaiDien { get; set; }
         public string TrangThai { get; set; } = "Hoạt động";
         public DateTime NgayTao { get; set; }
+
+        // Thông tin bổ sung
+        public string? SoCCCD { get; set; }
+        public DateTime? NgayCapCCCD { get; set; }
+        public string? NoiCapCCCD { get; set; }
+        public DateTime? NgaySinh { get; set; }
+        public string? GioiTinh { get; set; }
     }
 }

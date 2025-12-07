@@ -1,7 +1,9 @@
+using DoAnTotNghiep_KS_BE.Data;
 using DoAnTotNghiep_KS_BE.Interfaces.dto.Phong;
 using DoAnTotNghiep_KS_BE.Interfaces.IRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DoAnTotNghiep_KS_BE.Controllers
 {
@@ -10,10 +12,12 @@ namespace DoAnTotNghiep_KS_BE.Controllers
     public class PhongController : ControllerBase
     {
         private readonly IPhongRepository _phongRepository;
+        private readonly MyDbContext _context;
 
-        public PhongController(IPhongRepository phongRepository)
+        public PhongController(IPhongRepository phongRepository, MyDbContext context)
         {
             _phongRepository = phongRepository;
+            _context = context;
         }
 
         // GET: api/Phong
@@ -175,6 +179,55 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 success = true,
                 message = "Xóa phòng thành công"
             });
+        }
+
+        // ✅ NEW ENDPOINT: GET: api/Phong/PhongTrong
+        [HttpGet("PhongTrong")]
+        public async Task<IActionResult> GetPhongTrong(
+            [FromQuery] DateTime ngayNhanPhong,
+            [FromQuery] DateTime ngayTraPhong)
+        {
+            try
+            {
+                // Validate input dates
+                if (ngayNhanPhong == default || ngayTraPhong == default)
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Vui lòng cung cấp ngày nhận phòng và ngày trả phòng"
+                    });
+                }
+
+                if (ngayTraPhong <= ngayNhanPhong)
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Ngày trả phòng phải sau ngày nhận phòng"
+                    });
+                }
+
+                // Get available rooms from repository
+                var phongKhaDung = await _phongRepository.GetPhongTrongAsync(ngayNhanPhong, ngayTraPhong);
+
+                return Ok(new
+                {
+                    success = true,
+                    data = phongKhaDung,
+                    message = $"Tìm thấy {phongKhaDung.Count()} phòng trống",
+                    total = phongKhaDung.Count()
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi tải danh sách phòng trống",
+                    error = ex.Message
+                });
+            }
         }
     }
 }

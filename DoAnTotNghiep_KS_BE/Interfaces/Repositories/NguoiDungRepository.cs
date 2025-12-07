@@ -20,6 +20,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 .Include(n => n.PhuongXa)
                     .ThenInclude(x => x!.Huyen)
                     .ThenInclude(h => h!.Tinh)
+                .OrderByDescending(n => n.NgayTao)
                 .Select(n => new NguoiDungDTO
                 {
                     MaNguoiDung = n.MaNguoiDung,
@@ -36,9 +37,13 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     TenTinh = n.PhuongXa != null && n.PhuongXa.Huyen != null && n.PhuongXa.Huyen.Tinh != null ? n.PhuongXa.Huyen.Tinh.TenTinh : null,
                     AnhDaiDien = n.AnhDaiDien,
                     TrangThai = n.TrangThai,
-                    NgayTao = n.NgayTao
+                    NgayTao = n.NgayTao,
+                    SoCCCD = n.SoCCCD,
+                    NgayCapCCCD = n.NgayCapCCCD,
+                    NoiCapCCCD = n.NoiCapCCCD,
+                    NgaySinh = n.NgaySinh,
+                    GioiTinh = n.GioiTinh
                 })
-                .OrderByDescending(n => n.NgayTao)
                 .ToListAsync();
         }
 
@@ -49,6 +54,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     .ThenInclude(x => x!.Huyen)
                     .ThenInclude(h => h!.Tinh)
                 .Where(n => n.VaiTro == vaiTro)
+                .OrderByDescending(n => n.NgayTao)
                 .Select(n => new NguoiDungDTO
                 {
                     MaNguoiDung = n.MaNguoiDung,
@@ -65,9 +71,13 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     TenTinh = n.PhuongXa != null && n.PhuongXa.Huyen != null && n.PhuongXa.Huyen.Tinh != null ? n.PhuongXa.Huyen.Tinh.TenTinh : null,
                     AnhDaiDien = n.AnhDaiDien,
                     TrangThai = n.TrangThai,
-                    NgayTao = n.NgayTao
+                    NgayTao = n.NgayTao,
+                    SoCCCD = n.SoCCCD,
+                    NgayCapCCCD = n.NgayCapCCCD,
+                    NoiCapCCCD = n.NoiCapCCCD,
+                    NgaySinh = n.NgaySinh,
+                    GioiTinh = n.GioiTinh
                 })
-                .OrderByDescending(n => n.NgayTao)
                 .ToListAsync();
         }
 
@@ -94,7 +104,12 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     TenTinh = n.PhuongXa != null && n.PhuongXa.Huyen != null && n.PhuongXa.Huyen.Tinh != null ? n.PhuongXa.Huyen.Tinh.TenTinh : null,
                     AnhDaiDien = n.AnhDaiDien,
                     TrangThai = n.TrangThai,
-                    NgayTao = n.NgayTao
+                    NgayTao = n.NgayTao,
+                    SoCCCD = n.SoCCCD,
+                    NgayCapCCCD = n.NgayCapCCCD,
+                    NoiCapCCCD = n.NoiCapCCCD,
+                    NgaySinh = n.NgaySinh,
+                    GioiTinh = n.GioiTinh
                 })
                 .FirstOrDefaultAsync();
         }
@@ -107,19 +122,24 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     .ThenInclude(h => h!.Tinh)
                 .AsQueryable();
 
+            // Tìm kiếm theo từ khóa
             if (!string.IsNullOrWhiteSpace(searchDTO.SearchTerm))
             {
                 var term = searchDTO.SearchTerm.Trim().ToLower();
                 query = query.Where(n =>
                     n.Email.ToLower().Contains(term) ||
-                    (n.HoTen != null && n.HoTen.ToLower().Contains(term)));
+                    (n.HoTen != null && n.HoTen.ToLower().Contains(term)) ||
+                    (n.SoCCCD != null && n.SoCCCD.Contains(term)) ||
+                    (n.SoDienThoai != null && n.SoDienThoai.Contains(term)));
             }
 
+            // Lọc theo vai trò
             if (!string.IsNullOrWhiteSpace(searchDTO.VaiTro))
             {
                 query = query.Where(n => n.VaiTro == searchDTO.VaiTro);
             }
 
+            // Lọc theo trạng thái
             if (!string.IsNullOrWhiteSpace(searchDTO.TrangThai))
             {
                 query = query.Where(n => n.TrangThai == searchDTO.TrangThai);
@@ -147,7 +167,12 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     TenTinh = n.PhuongXa != null && n.PhuongXa.Huyen != null && n.PhuongXa.Huyen.Tinh != null ? n.PhuongXa.Huyen.Tinh.TenTinh : null,
                     AnhDaiDien = n.AnhDaiDien,
                     TrangThai = n.TrangThai,
-                    NgayTao = n.NgayTao
+                    NgayTao = n.NgayTao,
+                    SoCCCD = n.SoCCCD,
+                    NgayCapCCCD = n.NgayCapCCCD,
+                    NoiCapCCCD = n.NoiCapCCCD,
+                    NgaySinh = n.NgaySinh,
+                    GioiTinh = n.GioiTinh
                 })
                 .ToListAsync();
 
@@ -157,51 +182,49 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
         public async Task<bool> UpdateNguoiDungAsync(int maNguoiDung, UpdateNguoiDungAdminDTO updateDTO)
         {
             var nguoiDung = await _context.NguoiDungs.FirstOrDefaultAsync(n => n.MaNguoiDung == maNguoiDung);
-            if (nguoiDung == null)
-            {
-                return false;
-            }
+            if (nguoiDung == null) return false;
 
-            // Cập nhật các trường không null
+            // Cập nhật các trường cơ bản
             if (!string.IsNullOrWhiteSpace(updateDTO.HoTen))
             {
                 nguoiDung.HoTen = updateDTO.HoTen.Trim();
             }
 
-            if (!string.IsNullOrWhiteSpace(updateDTO.SoDienThoai))
-            {
-                nguoiDung.SoDienThoai = updateDTO.SoDienThoai.Trim();
-            }
+            nguoiDung.SoDienThoai = string.IsNullOrWhiteSpace(updateDTO.SoDienThoai)
+                ? null
+                : updateDTO.SoDienThoai.Trim();
 
-            if (updateDTO.DiaChiChiTiet != null)
-            {
-                nguoiDung.DiaChiChiTiet = string.IsNullOrWhiteSpace(updateDTO.DiaChiChiTiet)
-                    ? null
-                    : updateDTO.DiaChiChiTiet.Trim();
-            }
+            nguoiDung.DiaChiChiTiet = string.IsNullOrWhiteSpace(updateDTO.DiaChiChiTiet)
+                ? null
+                : updateDTO.DiaChiChiTiet.Trim();
 
-            // FIX: Cập nhật MaPhuongXa ĐÚNG CÁCH
-            // Nếu có giá trị trong DTO (kể cả null), thì cập nhật
             nguoiDung.MaPhuongXa = updateDTO.MaPhuongXa;
 
+            // Cập nhật thông tin CCCD
+            nguoiDung.SoCCCD = string.IsNullOrWhiteSpace(updateDTO.SoCCCD)
+                ? null
+                : updateDTO.SoCCCD.Trim();
+
+            nguoiDung.NgayCapCCCD = updateDTO.NgayCapCCCD;
+
+            nguoiDung.NoiCapCCCD = string.IsNullOrWhiteSpace(updateDTO.NoiCapCCCD)
+                ? null
+                : updateDTO.NoiCapCCCD.Trim();
+
+            // Cập nhật thông tin cá nhân
+            nguoiDung.NgaySinh = updateDTO.NgaySinh;
+
+            nguoiDung.GioiTinh = string.IsNullOrWhiteSpace(updateDTO.GioiTinh)
+                ? null
+                : updateDTO.GioiTinh.Trim();
+
+            // Cập nhật vai trò
             if (!string.IsNullOrWhiteSpace(updateDTO.VaiTro))
             {
-                var norm = updateDTO.VaiTro.Trim().ToLower();
-
-                string? mappedRole = norm switch
-                {
-                    "admin" => "Admin",
-                    "khachhang" => "KhachHang",
-                    "letan" => "LeTan",
-                    _ => null
-                };
-
-                if (mappedRole != null)
-                {
-                    nguoiDung.VaiTro = mappedRole;
-                }
+                nguoiDung.VaiTro = updateDTO.VaiTro.Trim();
             }
 
+            // Cập nhật trạng thái
             if (!string.IsNullOrWhiteSpace(updateDTO.TrangThai))
             {
                 nguoiDung.TrangThai = updateDTO.TrangThai;
@@ -230,20 +253,33 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 nguoiDung.HoTen = updateDTO.HoTen.Trim();
             }
 
-            if (!string.IsNullOrWhiteSpace(updateDTO.SoDienThoai))
-            {
-                nguoiDung.SoDienThoai = updateDTO.SoDienThoai.Trim();
-            }
-            else
-            {
-                nguoiDung.SoDienThoai = null;
-            }
+            nguoiDung.SoDienThoai = string.IsNullOrWhiteSpace(updateDTO.SoDienThoai)
+                ? null
+                : updateDTO.SoDienThoai.Trim();
 
             nguoiDung.DiaChiChiTiet = string.IsNullOrWhiteSpace(updateDTO.DiaChiChiTiet)
                 ? null
                 : updateDTO.DiaChiChiTiet.Trim();
 
             nguoiDung.MaPhuongXa = updateDTO.MaPhuongXa;
+
+            // Cập nhật thông tin CCCD
+            nguoiDung.SoCCCD = string.IsNullOrWhiteSpace(updateDTO.SoCCCD)
+                ? null
+                : updateDTO.SoCCCD.Trim();
+
+            nguoiDung.NgayCapCCCD = updateDTO.NgayCapCCCD;
+
+            nguoiDung.NoiCapCCCD = string.IsNullOrWhiteSpace(updateDTO.NoiCapCCCD)
+                ? null
+                : updateDTO.NoiCapCCCD.Trim();
+
+            // Cập nhật thông tin cá nhân
+            nguoiDung.NgaySinh = updateDTO.NgaySinh;
+
+            nguoiDung.GioiTinh = string.IsNullOrWhiteSpace(updateDTO.GioiTinh)
+                ? null
+                : updateDTO.GioiTinh.Trim();
 
             try
             {
@@ -266,13 +302,11 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 return (false, "Người dùng không tồn tại");
             }
 
-            // Verify old password
             if (!BCrypt.Net.BCrypt.Verify(changePasswordDTO.MatKhauCu, nguoiDung.MatKhau))
             {
                 return (false, "Mật khẩu hiện tại không đúng");
             }
 
-            // Hash new password
             nguoiDung.MatKhau = BCrypt.Net.BCrypt.HashPassword(changePasswordDTO.MatKhauMoi);
 
             try

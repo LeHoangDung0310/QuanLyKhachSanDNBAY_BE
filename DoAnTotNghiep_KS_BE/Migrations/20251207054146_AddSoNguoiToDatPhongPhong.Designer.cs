@@ -4,6 +4,7 @@ using DoAnTotNghiep_KS_BE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoAnTotNghiep_KS_BE.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251207054146_AddSoNguoiToDatPhongPhong")]
+    partial class AddSoNguoiToDatPhongPhong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,15 +70,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaDatPhong"));
 
-                    b.Property<string>("LoaiDatPhong")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<int>("MaKhachHang")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MaNguoiTao")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("NgayDat")
@@ -95,8 +90,6 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.HasKey("MaDatPhong");
 
                     b.HasIndex("MaKhachHang");
-
-                    b.HasIndex("MaNguoiTao");
 
                     b.ToTable("DatPhong");
                 });
@@ -685,13 +678,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DoAnTotNghiep_KS_BE.Data.Entities.NguoiDung", "NguoiTao")
-                        .WithMany()
-                        .HasForeignKey("MaNguoiTao");
-
                     b.Navigation("KhachHang");
-
-                    b.Navigation("NguoiTao");
                 });
 
             modelBuilder.Entity("DoAnTotNghiep_KS_BE.Data.Entities.DatPhong_Phong", b =>

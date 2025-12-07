@@ -190,5 +190,53 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
         {
             return await _context.Phongs.AnyAsync(p => p.SoPhong == soPhong);
         }
+
+        // ✅ IMPLEMENT METHOD MỚI
+        public async Task<IEnumerable<PhongTrongDTO>> GetPhongTrongAsync(DateTime ngayNhanPhong, DateTime ngayTraPhong)
+        {
+            // 1. Lấy tất cả phòng có trạng thái "Trong"
+            var phongTrong = await _context.Phongs
+                .Include(p => p.LoaiPhong)
+                .Include(p => p.Tang)
+                .Where(p => p.TrangThai == "Trong")
+                .ToListAsync();
+
+            // 2. Lấy danh sách phòng đã được đặt trong khoảng thời gian
+            var phongDaDat = await _context.DatPhong_Phongs
+                .Include(dp => dp.DatPhong)
+                .Where(dp =>
+                    // Chỉ lấy đặt phòng chưa hủy và chưa hoàn tất
+                    dp.DatPhong.TrangThai != "DaHuy" &&
+                    dp.DatPhong.TrangThai != "DaThanhToan" &&
+                    // Kiểm tra trùng thời gian
+                    (
+                        (dp.DatPhong.NgayNhanPhong < ngayTraPhong &&
+                         dp.DatPhong.NgayTraPhong > ngayNhanPhong)
+                    )
+                )
+                .Select(dp => dp.MaPhong)
+                .Distinct()
+                .ToListAsync();
+
+            // 3. Lọc phòng chưa được đặt
+            var phongKhaDung = phongTrong
+                .Where(p => !phongDaDat.Contains(p.MaPhong))
+                .Select(p => new PhongTrongDTO
+                {
+                    MaPhong = p.MaPhong,
+                    SoPhong = p.SoPhong,
+                    TrangThai = p.TrangThai,
+                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null,
+                    GiaMoiDem = p.LoaiPhong != null ? p.LoaiPhong.GiaMoiDem : null,
+                    SoNguoiToiDa = p.LoaiPhong != null ? p.LoaiPhong.SoNguoiToiDa : null,
+                    DienTich = p.LoaiPhong != null ? p.LoaiPhong.DienTich : null,
+                    MoTa = p.LoaiPhong != null ? p.LoaiPhong.MoTa : null,
+                    TenTang = p.Tang != null ? p.Tang.TenTang : null
+                })
+                .OrderBy(p => p.SoPhong)
+                .ToList();
+
+            return phongKhaDung;
+        }
     }
 }

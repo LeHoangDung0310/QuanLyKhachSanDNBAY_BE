@@ -23,5 +23,21 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung
         [StringLength(20)]
         [RegularExpression("^(Hoạt động|Tạm khóa)$", ErrorMessage = "Trạng thái phải là 'Hoạt động' hoặc 'Tạm khóa'")]
         public string? TrangThai { get; set; }
+
+        // Thông tin CCCD
+        [StringLength(20)]
+        public string? SoCCCD { get; set; }
+
+        public DateTime? NgayCapCCCD { get; set; }
+
+        [StringLength(200)]
+        public string? NoiCapCCCD { get; set; }
+
+        // Thông tin cá nhân
+        public DateTime? NgaySinh { get; set; }
+
+        [StringLength(10)]
+        [RegularExpression("^(Nam|Nữ|Khác)$", ErrorMessage = "Giới tính phải là Nam, Nữ hoặc Khác")]
+        public string? GioiTinh { get; set; }
     }
 }

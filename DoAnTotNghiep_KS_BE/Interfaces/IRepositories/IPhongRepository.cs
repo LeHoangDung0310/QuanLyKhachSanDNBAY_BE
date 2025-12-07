@@ -13,5 +13,8 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
         Task<bool> DeletePhongAsync(int maPhong);
         Task<bool> PhongExistsAsync(int maPhong);
         Task<bool> SoPhongExistsAsync(string soPhong);
+
+        // ✅ THÊM METHOD MỚI
+        Task<IEnumerable<PhongTrongDTO>> GetPhongTrongAsync(DateTime ngayNhanPhong, DateTime ngayTraPhong);
     }
 }

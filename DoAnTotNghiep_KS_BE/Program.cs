@@ -21,18 +21,18 @@ builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<IDangKyRepository, DangKyRepository>();
 builder.Services.AddScoped<IQuenMatKhauRepository, QuenMatKhauRepository>();
 builder.Services.AddScoped<INguoiDungRepository, NguoiDungRepository>();
-
-// Thêm dòng này - đã có nhưng cần kiểm tra lại
 builder.Services.AddScoped<ILoaiPhongRepository, LoaiPhongRepository>();
-
-// Đăng ký services
-builder.Services.AddScoped<IEmailService, EmailService>();
-
-// Thêm vào phần đăng ký services
+builder.Services.AddScoped<IDatPhongRepository, DatPhongRepository>();
 builder.Services.AddScoped<ITienNghiRepository, TienNghiRepository>();
 builder.Services.AddScoped<IHinhAnhLPhongRepository, HinhAnhLPhongRepository>();
 builder.Services.AddScoped<IPhongRepository, PhongRepository>();
 builder.Services.AddScoped<ITangRepository, TangRepository>();
+
+// THÊM MỚI
+builder.Services.AddScoped<IThanhToanRepository, ThanhToanRepository>();
+
+// Đăng ký services
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Thêm CORS cho phep FE gọi API
 builder.Services.AddCors(options =>

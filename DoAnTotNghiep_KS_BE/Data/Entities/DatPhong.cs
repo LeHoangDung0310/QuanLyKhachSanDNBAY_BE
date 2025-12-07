@@ -29,8 +29,16 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [StringLength(20)]
         public string TrangThai { get; set; } = "ChoDuyet";
 
+        // THÊM FIELD MỚI
+        [ForeignKey("NguoiTao")]
+        public int? MaNguoiTao { get; set; } // NULL nếu khách tự đặt online, có giá trị nếu lễ tân đặt
+
+        [StringLength(20)]
+        public string LoaiDatPhong { get; set; } = "Online"; // "Online" hoặc "TrucTiep"
+
         // Navigation properties
         public virtual NguoiDung? KhachHang { get; set; }
+        public virtual NguoiDung? NguoiTao { get; set; } // Lễ tân tạo đặt phòng
         public virtual ICollection<DatPhong_Phong>? DatPhong_Phongs { get; set; }
         public virtual ICollection<ThanhToan>? ThanhToans { get; set; }
         public virtual ICollection<HuyDatPhong>? HuyDatPhongs { get; set; }
