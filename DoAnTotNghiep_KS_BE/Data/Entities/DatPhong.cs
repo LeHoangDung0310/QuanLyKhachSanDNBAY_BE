@@ -36,6 +36,9 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [StringLength(20)]
         public string LoaiDatPhong { get; set; } = "Online"; // "Online" hoặc "TrucTiep"
 
+        public DateTime? ThoiGianCheckIn { get; set; }
+        public DateTime? ThoiGianCheckOut { get; set; }
+
         // Navigation properties
         public virtual NguoiDung? KhachHang { get; set; }
         public virtual NguoiDung? NguoiTao { get; set; } // Lễ tân tạo đặt phòng

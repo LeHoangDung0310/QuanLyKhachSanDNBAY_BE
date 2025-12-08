@@ -316,7 +316,9 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 // THÊM MỚI
                 MaNguoiTao = dp.MaNguoiTao,
                 TenNguoiTao = dp.NguoiTao?.HoTen, // Tên lễ tân
-                LoaiDatPhong = dp.LoaiDatPhong
+                LoaiDatPhong = dp.LoaiDatPhong,
+                ThoiGianCheckIn = dp.ThoiGianCheckIn,
+                ThoiGianCheckOut = dp.ThoiGianCheckOut
             };
         }
 
@@ -546,20 +548,19 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 return (false, "Đặt phòng không tồn tại");
             }
 
-            // Kiểm tra trạng thái
             if (datPhong.TrangThai != "DaDuyet")
             {
                 return (false, $"Không thể check-in. Trạng thái hiện tại: {datPhong.TrangThai}");
             }
 
-            // Kiểm tra ngày nhận phòng
             if (datPhong.NgayNhanPhong.Date > DateTime.Now.Date)
             {
                 return (false, $"Chưa đến ngày nhận phòng ({datPhong.NgayNhanPhong:dd/MM/yyyy})");
             }
 
-            // Cập nhật trạng thái đặt phòng
+            // ✅ Cập nhật trạng thái và THỜI GIAN CHECK-IN
             datPhong.TrangThai = "DangSuDung";
+            datPhong.ThoiGianCheckIn = DateTime.Now; // ✅ LƯU THỜI GIAN
 
             // Cập nhật trạng thái phòng
             if (datPhong.DatPhong_Phongs != null)
@@ -591,7 +592,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 return (false, "Đặt phòng không tồn tại");
             }
 
-            // Kiểm tra trạng thái
             if (datPhong.TrangThai != "DangSuDung")
             {
                 return (false, $"Không thể check-out. Trạng thái hiện tại: {datPhong.TrangThai}");
@@ -612,8 +612,9 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 return (false, $"Chưa thanh toán đủ. Còn thiếu: {conLai:N0}đ");
             }
 
-            // Cập nhật trạng thái đặt phòng
+            // ✅ Cập nhật trạng thái và THỜI GIAN CHECK-OUT
             datPhong.TrangThai = "HoanThanh";
+            datPhong.ThoiGianCheckOut = DateTime.Now; // ✅ LƯU THỜI GIAN
 
             // Cập nhật trạng thái phòng về "Trong"
             if (datPhong.DatPhong_Phongs != null)

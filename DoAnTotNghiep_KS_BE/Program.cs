@@ -27,9 +27,10 @@ builder.Services.AddScoped<ITienNghiRepository, TienNghiRepository>();
 builder.Services.AddScoped<IHinhAnhLPhongRepository, HinhAnhLPhongRepository>();
 builder.Services.AddScoped<IPhongRepository, PhongRepository>();
 builder.Services.AddScoped<ITangRepository, TangRepository>();
-
-// THÊM MỚI
 builder.Services.AddScoped<IThanhToanRepository, ThanhToanRepository>();
+
+// ✅ THÊM MỚI
+builder.Services.AddScoped<IHuyDatPhongRepository, HuyDatPhongRepository>();
 
 // Đăng ký services
 builder.Services.AddScoped<IEmailService, EmailService>();

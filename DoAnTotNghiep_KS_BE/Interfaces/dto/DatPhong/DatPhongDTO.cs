@@ -21,7 +21,9 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.DatPhong
         // THÊM MỚI
         public int? MaNguoiTao { get; set; }
         public string? TenNguoiTao { get; set; } // Tên lễ tân tạo
-        public string LoaiDatPhong { get; set; } = "Online"; // "Online" hoặc "TrucTiep"
+        public string LoaiDatPhong { get; set; } = "Online"; // "Online" hoặc "TrucTiep"                                  
+        public DateTime? ThoiGianCheckIn { get; set; }
+        public DateTime? ThoiGianCheckOut { get; set; }
     }
 
     public class PhongDatDTO

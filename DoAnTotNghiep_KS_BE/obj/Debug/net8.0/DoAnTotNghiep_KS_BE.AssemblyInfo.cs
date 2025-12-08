@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DoAnTotNghiep_KS_BE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ab41f71cff7a72ec02417960bb482be891f0819")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c94dce66adcab4e11444fdd2d93c18df39c312b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DoAnTotNghiep_KS_BE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DoAnTotNghiep_KS_BE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
