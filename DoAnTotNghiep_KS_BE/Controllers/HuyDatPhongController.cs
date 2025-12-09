@@ -17,7 +17,7 @@ namespace DoAnTotNghiep_KS_BE.Controllers
             _huyDatPhongRepository = huyDatPhongRepository;
         }
 
-        // ✅ KIỂM TRA ĐIỀU KIỆN HỦY (Public - để FE check trước)
+        // ✅ KIỂM TRA ĐIỀU KIỆN HỦY (giữ nguyên)
         [HttpGet("KiemTraDieuKien/{maDatPhong}")]
         [Authorize]
         public async Task<IActionResult> KiemTraDieuKienHuy(int maDatPhong)
@@ -37,7 +37,7 @@ namespace DoAnTotNghiep_KS_BE.Controllers
             });
         }
 
-        // ✅ NGƯỜI DÙNG YÊU CẦU HỦY
+        // ✅ NGƯỜI DÙNG YÊU CẦU HỦY (CẬP NHẬT - kèm thông tin ngân hàng)
         [HttpPost("YeuCauHuy/{maDatPhong}")]
         [Authorize(Roles = "KhachHang")]
         public async Task<IActionResult> YeuCauHuyDatPhong(int maDatPhong, [FromBody] YeuCauHuyRequest request)
@@ -51,7 +51,10 @@ namespace DoAnTotNghiep_KS_BE.Controllers
             var (success, message, phiGiu) = await _huyDatPhongRepository.YeuCauHuyDatPhongAsync(
                 maDatPhong,
                 request.LyDo,
-                userId
+                userId,
+                request.NganHang,
+                request.SoTaiKhoan,
+                request.TenChuTK
             );
 
             if (!success)
@@ -121,6 +124,40 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 id,
                 request.ChoDuyet,
                 leTanId,
+                request.GhiChu
+            );
+
+            if (!success)
+            {
+                return BadRequest(new { success = false, message });
+            }
+
+            return Ok(new { success = true, message });
+        }
+
+        // ✅ THÊM MỚI - ADMIN LẤY DANH SÁCH CHỜ HOÀN TIỀN
+        [HttpGet("ChoHoanTien")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetDanhSachChoHoanTien()
+        {
+            var list = await _huyDatPhongRepository.GetDanhSachChoHoanTienAsync();
+            return Ok(new { success = true, data = list });
+        }
+
+        // ✅ THÊM MỚI - ADMIN XÁC NHẬN ĐÃ HOÀN TIỀN
+        [HttpPut("HoanTien/{maHoanTien}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> XacNhanHoanTien(int maHoanTien, [FromBody] XacNhanHoanTienRequest request)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int adminId))
+            {
+                return Unauthorized(new { success = false, message = "Unauthorized" });
+            }
+
+            var (success, message) = await _huyDatPhongRepository.XacNhanHoanTienAsync(
+                maHoanTien,
+                adminId,
                 request.GhiChu
             );
 

@@ -19,16 +19,39 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.HuyDatPhong
         public DateTime? NgayXuLy { get; set; }
         public string? TenNguoiDuyet { get; set; }
         public string? GhiChu { get; set; }
+
+        // ✅ THÊM MỚI - Thông tin tài khoản ngân hàng
+        public int? MaTaiKhoan { get; set; }
+        public string? NganHang { get; set; }
+        public string? SoTaiKhoan { get; set; }
+        public string? TenChuTK { get; set; }
+
+        // ✅ Thông tin hoàn tiền
+        public int? MaHoanTien { get; set; }
+        public string? TrangThaiHoanTien { get; set; }
+        public DateTime? NgayHoanTien { get; set; }
+        public string? TenQuanTriHoanTien { get; set; }
     }
 
     public class YeuCauHuyRequest
     {
         public string LyDo { get; set; } = string.Empty;
+
+        // ✅ THÊM MỚI - Thông tin ngân hàng (bắt buộc nếu chưa có)
+        public string? NganHang { get; set; }
+        public string? SoTaiKhoan { get; set; }
+        public string? TenChuTK { get; set; }
     }
 
     public class DuyetHuyRequest
     {
         public bool ChoDuyet { get; set; }
+        public string? GhiChu { get; set; }
+    }
+
+    // ✅ THÊM MỚI - Request cho Admin hoàn tiền
+    public class XacNhanHoanTienRequest
+    {
         public string? GhiChu { get; set; }
     }
 }
