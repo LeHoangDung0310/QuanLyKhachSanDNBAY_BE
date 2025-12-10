@@ -39,5 +39,14 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung
         [StringLength(10)]
         [RegularExpression("^(Nam|Nữ|Khác)$", ErrorMessage = "Giới tính phải là Nam, Nữ hoặc Khác")]
         public string? GioiTinh { get; set; }
+        // Thông tin tài khoản ngân hàng
+        [StringLength(100)]
+        public string? NganHang { get; set; }
+
+        [StringLength(30)]
+        public string? SoTaiKhoan { get; set; }
+
+        [StringLength(100)]
+        public string? TenChuTK { get; set; }
     }
 }

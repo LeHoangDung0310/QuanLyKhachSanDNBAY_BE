@@ -87,6 +87,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 .Include(n => n.PhuongXa)
                     .ThenInclude(x => x!.Huyen)
                     .ThenInclude(h => h!.Tinh)
+                .Include(n => n.TaiKhoanNganHangs) // Thêm include này
                 .Where(n => n.MaNguoiDung == maNguoiDung)
                 .Select(n => new NguoiDungDTO
                 {
@@ -109,7 +110,17 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     NgayCapCCCD = n.NgayCapCCCD,
                     NoiCapCCCD = n.NoiCapCCCD,
                     NgaySinh = n.NgaySinh,
-                    GioiTinh = n.GioiTinh
+                    GioiTinh = n.GioiTinh,
+                    // Thông tin tài khoản ngân hàng (lấy tài khoản đầu tiên nếu có)
+                    NganHang = n.TaiKhoanNganHangs != null && n.TaiKhoanNganHangs.Any()
+                        ? n.TaiKhoanNganHangs.FirstOrDefault()!.NganHang
+                        : null,
+                    SoTaiKhoan = n.TaiKhoanNganHangs != null && n.TaiKhoanNganHangs.Any()
+                        ? n.TaiKhoanNganHangs.FirstOrDefault()!.SoTaiKhoan
+                        : null,
+                    TenChuTK = n.TaiKhoanNganHangs != null && n.TaiKhoanNganHangs.Any()
+                        ? n.TaiKhoanNganHangs.FirstOrDefault()!.TenChuTK
+                        : null
                 })
                 .FirstOrDefaultAsync();
         }
@@ -181,10 +192,20 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
 
         public async Task<bool> UpdateNguoiDungAsync(int maNguoiDung, UpdateNguoiDungAdminDTO updateDTO)
         {
-            var nguoiDung = await _context.NguoiDungs.FirstOrDefaultAsync(n => n.MaNguoiDung == maNguoiDung);
-            if (nguoiDung == null) return false;
+            // ✅ Load người dùng kèm theo tài khoản ngân hàng
+            var nguoiDung = await _context.NguoiDungs
+                .Include(n => n.TaiKhoanNganHangs)
+                .FirstOrDefaultAsync(n => n.MaNguoiDung == maNguoiDung);
 
-            // Cập nhật các trường cơ bản
+            if (nguoiDung == null)
+            {
+                Console.WriteLine($"❌ Không tìm thấy người dùng {maNguoiDung}");
+                return false;
+            }
+
+            Console.WriteLine($"✅ Tìm thấy người dùng {maNguoiDung}: {nguoiDung.Email}");
+
+            // Cập nhật thông tin cơ bản
             if (!string.IsNullOrWhiteSpace(updateDTO.HoTen))
             {
                 nguoiDung.HoTen = updateDTO.HoTen.Trim();
@@ -230,15 +251,85 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 nguoiDung.TrangThai = updateDTO.TrangThai;
             }
 
+            // ✅ XỬ LÝ TÀI KHOẢN NGÂN HÀNG
+            Console.WriteLine("🏦 Bắt đầu xử lý tài khoản ngân hàng...");
+            Console.WriteLine($"   - Ngân hàng: {updateDTO.NganHang}");
+            Console.WriteLine($"   - Số TK: {updateDTO.SoTaiKhoan}");
+            Console.WriteLine($"   - Chủ TK: {updateDTO.TenChuTK}");
+
+            // Kiểm tra có dữ liệu ngân hàng mới không
+            bool hasNewBankData = !string.IsNullOrWhiteSpace(updateDTO.NganHang) ||
+                          !string.IsNullOrWhiteSpace(updateDTO.SoTaiKhoan) ||
+                          !string.IsNullOrWhiteSpace(updateDTO.TenChuTK);
+
+            Console.WriteLine($"   - Có dữ liệu ngân hàng mới: {hasNewBankData}");
+
+            // Lấy tài khoản ngân hàng hiện tại (nếu có)
+            var taiKhoanNganHang = nguoiDung.TaiKhoanNganHangs?.FirstOrDefault();
+            Console.WriteLine($"   - Tài khoản hiện tại: {(taiKhoanNganHang != null ? "Có" : "Không")}");
+
+            if (hasNewBankData)
+            {
+                if (taiKhoanNganHang != null)
+                {
+                    // ✅ Cập nhật tài khoản hiện có
+                    Console.WriteLine("   → Cập nhật tài khoản hiện có");
+                    taiKhoanNganHang.NganHang = updateDTO.NganHang?.Trim();
+                    taiKhoanNganHang.SoTaiKhoan = updateDTO.SoTaiKhoan?.Trim();
+                    taiKhoanNganHang.TenChuTK = updateDTO.TenChuTK?.Trim();
+
+                    _context.Entry(taiKhoanNganHang).State = EntityState.Modified;
+                }
+                else
+                {
+                    // ✅ Tạo mới tài khoản ngân hàng
+                    Console.WriteLine("   → Tạo mới tài khoản ngân hàng");
+                    var newTaiKhoan = new Data.Entities.TaiKhoanNganHang
+                    {
+                        MaNguoiDung = maNguoiDung,
+                        NganHang = updateDTO.NganHang?.Trim(),
+                        SoTaiKhoan = updateDTO.SoTaiKhoan?.Trim(),
+                        TenChuTK = updateDTO.TenChuTK?.Trim()
+                    };
+
+                    await _context.TaiKhoanNganHangs.AddAsync(newTaiKhoan);
+                    Console.WriteLine($"   → Đã add vào context: NH={newTaiKhoan.NganHang}, STK={newTaiKhoan.SoTaiKhoan}");
+                }
+            }
+            else if (taiKhoanNganHang != null)
+            {
+                // ✅ Xóa tài khoản ngân hàng nếu không còn dữ liệu
+                Console.WriteLine("   → Xóa tài khoản ngân hàng");
+                _context.TaiKhoanNganHangs.Remove(taiKhoanNganHang);
+            }
+
             try
             {
-                _context.NguoiDungs.Update(nguoiDung);
-                await _context.SaveChangesAsync();
+                // ✅ Lưu tất cả thay đổi
+                _context.Entry(nguoiDung).State = EntityState.Modified;
+
+                Console.WriteLine("💾 Bắt đầu SaveChanges...");
+                var savedChanges = await _context.SaveChangesAsync();
+                Console.WriteLine($"✅ Đã lưu {savedChanges} thay đổi vào database");
+
                 return true;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                Console.WriteLine($"❌ Lỗi DbUpdateException: {dbEx.Message}");
+                Console.WriteLine($"   InnerException: {dbEx.InnerException?.Message}");
+
+                if (dbEx.InnerException != null)
+                {
+                    Console.WriteLine($"   Stack trace: {dbEx.InnerException.StackTrace}");
+                }
+
+                return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Lỗi khi cập nhật người dùng: {ex.Message}");
+                Console.WriteLine($"❌ Lỗi Exception: {ex.Message}");
+                Console.WriteLine($"   Stack trace: {ex.StackTrace}");
                 return false;
             }
         }

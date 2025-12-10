@@ -1,5 +1,5 @@
-﻿using DoAnTotNghiep_KS_BE.Data.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using DoAnTotNghiep_KS_BE.Data.Entities;
 
 namespace DoAnTotNghiep_KS_BE.Data
 {
@@ -158,7 +158,7 @@ namespace DoAnTotNghiep_KS_BE.Data
 				.HasOne(t => t.NguoiDung)
 				.WithMany(n => n.TaiKhoanNganHangs)
 				.HasForeignKey(t => t.MaNguoiDung)
-				.OnDelete(DeleteBehavior.Restrict);
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

@@ -24,5 +24,10 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung
         public string? NoiCapCCCD { get; set; }
         public DateTime? NgaySinh { get; set; }
         public string? GioiTinh { get; set; }
+
+        // Thông tin tài khoản ngân hàng
+        public string? NganHang { get; set; }
+        public string? SoTaiKhoan { get; set; }
+        public string? TenChuTK { get; set; }
     }
 }
