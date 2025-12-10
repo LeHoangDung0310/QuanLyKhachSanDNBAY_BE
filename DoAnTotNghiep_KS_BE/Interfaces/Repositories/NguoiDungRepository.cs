@@ -336,9 +336,16 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
 
         public async Task<bool> UpdateProfileAsync(int maNguoiDung, UpdateProfileDTO updateDTO)
         {
-            var nguoiDung = await _context.NguoiDungs.FirstOrDefaultAsync(n => n.MaNguoiDung == maNguoiDung);
+            // ✅ Load người dùng kèm tài khoản ngân hàng
+            var nguoiDung = await _context.NguoiDungs
+                .Include(n => n.TaiKhoanNganHangs)
+                .FirstOrDefaultAsync(n => n.MaNguoiDung == maNguoiDung);
+
             if (nguoiDung == null) return false;
 
+            Console.WriteLine($"✅ UpdateProfile cho user {maNguoiDung}");
+
+            // Cập nhật thông tin cơ bản
             if (!string.IsNullOrWhiteSpace(updateDTO.HoTen))
             {
                 nguoiDung.HoTen = updateDTO.HoTen.Trim();
@@ -372,15 +379,68 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 ? null
                 : updateDTO.GioiTinh.Trim();
 
+            // ✅ XỬ LÝ TÀI KHOẢN NGÂN HÀNG (GIỐNG NHƯ ADMIN UPDATE)
+            Console.WriteLine("🏦 Xử lý tài khoản ngân hàng...");
+            Console.WriteLine($"   - NH: {updateDTO.NganHang}");
+            Console.WriteLine($"   - STK: {updateDTO.SoTaiKhoan}");
+            Console.WriteLine($"   - Chủ TK: {updateDTO.TenChuTK}");
+
+            bool hasNewBankData = !string.IsNullOrWhiteSpace(updateDTO.NganHang) ||
+                              !string.IsNullOrWhiteSpace(updateDTO.SoTaiKhoan) ||
+                              !string.IsNullOrWhiteSpace(updateDTO.TenChuTK);
+
+            var taiKhoanNganHang = nguoiDung.TaiKhoanNganHangs?.FirstOrDefault();
+            Console.WriteLine($"   - TK hiện tại: {(taiKhoanNganHang != null ? "Có" : "Không")}");
+
+            if (hasNewBankData)
+            {
+                if (taiKhoanNganHang != null)
+                {
+                    // Cập nhật tài khoản hiện có
+                    Console.WriteLine("   → Cập nhật tài khoản hiện có");
+                    taiKhoanNganHang.NganHang = updateDTO.NganHang?.Trim();
+                    taiKhoanNganHang.SoTaiKhoan = updateDTO.SoTaiKhoan?.Trim();
+                    taiKhoanNganHang.TenChuTK = updateDTO.TenChuTK?.Trim();
+                    _context.Entry(taiKhoanNganHang).State = EntityState.Modified;
+                }
+                else
+                {
+                    // Tạo mới
+                    Console.WriteLine("   → Tạo mới tài khoản ngân hàng");
+                    var newTaiKhoan = new Data.Entities.TaiKhoanNganHang
+                    {
+                        MaNguoiDung = maNguoiDung,
+                        NganHang = updateDTO.NganHang?.Trim(),
+                        SoTaiKhoan = updateDTO.SoTaiKhoan?.Trim(),
+                        TenChuTK = updateDTO.TenChuTK?.Trim()
+                    };
+                    await _context.TaiKhoanNganHangs.AddAsync(newTaiKhoan);
+                }
+            }
+            else if (taiKhoanNganHang != null)
+            {
+                // Xóa nếu không còn dữ liệu
+                Console.WriteLine("   → Xóa tài khoản ngân hàng");
+                _context.TaiKhoanNganHangs.Remove(taiKhoanNganHang);
+            }
+
             try
             {
-                _context.NguoiDungs.Update(nguoiDung);
-                await _context.SaveChangesAsync();
+                _context.Entry(nguoiDung).State = EntityState.Modified;
+                Console.WriteLine("💾 Đang SaveChanges...");
+                var changes = await _context.SaveChangesAsync();
+                Console.WriteLine($"✅ Đã lưu {changes} thay đổi");
                 return true;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                Console.WriteLine($"❌ DbUpdateException: {dbEx.Message}");
+                Console.WriteLine($"   InnerException: {dbEx.InnerException?.Message}");
+                return false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error updating profile: {ex.Message}");
+                Console.WriteLine($"❌ Exception: {ex.Message}");
                 return false;
             }
         }
