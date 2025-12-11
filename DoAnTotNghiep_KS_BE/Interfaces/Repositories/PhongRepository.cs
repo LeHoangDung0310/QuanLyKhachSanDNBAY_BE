@@ -24,8 +24,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 {
                     MaPhong = p.MaPhong,
                     SoPhong = p.SoPhong,
-                    SoGiuong = p.SoGiuong,
-                    SoNguoiToiDa = p.SoNguoiToiDa,
                     MoTa = p.MoTa,
                     TrangThai = p.TrangThai,
                     MaTang = p.MaTang,
@@ -46,8 +44,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 {
                     MaPhong = p.MaPhong,
                     SoPhong = p.SoPhong,
-                    SoGiuong = p.SoGiuong,
-                    SoNguoiToiDa = p.SoNguoiToiDa,
                     MoTa = p.MoTa,
                     TrangThai = p.TrangThai,
                     MaTang = p.MaTang,
@@ -78,26 +74,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 query = query.Where(p => p.MaLoaiPhong == searchDTO.MaLoaiPhong.Value);
             }
 
-            // Lọc theo số giường
-            if (searchDTO.SoGiuongMin.HasValue)
-            {
-                query = query.Where(p => p.SoGiuong >= searchDTO.SoGiuongMin.Value);
-            }
-            if (searchDTO.SoGiuongMax.HasValue)
-            {
-                query = query.Where(p => p.SoGiuong <= searchDTO.SoGiuongMax.Value);
-            }
-
-            // Lọc theo số người tối đa
-            if (searchDTO.SoNguoiToiDaMin.HasValue)
-            {
-                query = query.Where(p => p.SoNguoiToiDa >= searchDTO.SoNguoiToiDaMin.Value);
-            }
-            if (searchDTO.SoNguoiToiDaMax.HasValue)
-            {
-                query = query.Where(p => p.SoNguoiToiDa <= searchDTO.SoNguoiToiDaMax.Value);
-            }
-
             // Lọc theo trạng thái
             if (!string.IsNullOrWhiteSpace(searchDTO.TrangThai))
             {
@@ -122,8 +98,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 {
                     MaPhong = p.MaPhong,
                     SoPhong = p.SoPhong,
-                    SoGiuong = p.SoGiuong,
-                    SoNguoiToiDa = p.SoNguoiToiDa,
                     MoTa = p.MoTa,
                     TrangThai = p.TrangThai,
                     MaTang = p.MaTang,
@@ -141,8 +115,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             var phong = new Phong
             {
                 SoPhong = createPhongDTO.SoPhong,
-                SoGiuong = createPhongDTO.SoGiuong,
-                SoNguoiToiDa = createPhongDTO.SoNguoiToiDa,
                 MoTa = createPhongDTO.MoTa,
                 MaTang = createPhongDTO.MaTang,
                 MaLoaiPhong = createPhongDTO.MaLoaiPhong,
@@ -160,8 +132,6 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             if (phong == null) return false;
 
             if (updatePhongDTO.SoPhong != null) phong.SoPhong = updatePhongDTO.SoPhong;
-            if (updatePhongDTO.SoGiuong.HasValue) phong.SoGiuong = updatePhongDTO.SoGiuong;
-            if (updatePhongDTO.SoNguoiToiDa.HasValue) phong.SoNguoiToiDa = updatePhongDTO.SoNguoiToiDa;
             if (updatePhongDTO.MoTa != null) phong.MoTa = updatePhongDTO.MoTa;
             if (updatePhongDTO.TrangThai != null) phong.TrangThai = updatePhongDTO.TrangThai;
             if (updatePhongDTO.MaTang.HasValue) phong.MaTang = updatePhongDTO.MaTang;
@@ -191,36 +161,34 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             return await _context.Phongs.AnyAsync(p => p.SoPhong == soPhong);
         }
 
-        // ✅ IMPLEMENT METHOD MỚI
+        // ✅ IMPLEMENT METHOD MỚI - LOGIC ĐÚNG
         public async Task<IEnumerable<PhongTrongDTO>> GetPhongTrongAsync(DateTime ngayNhanPhong, DateTime ngayTraPhong)
         {
-            // 1. Lấy tất cả phòng có trạng thái "Trong"
-            var phongTrong = await _context.Phongs
+            // 1. Lấy TẤT CẢ phòng (không lọc trạng thái vì phòng đang dùng hôm nay có thể trống ngày mai)
+            var tatCaPhong = await _context.Phongs
                 .Include(p => p.LoaiPhong)
                 .Include(p => p.Tang)
-                .Where(p => p.TrangThai == "Trong")
+                .Where(p => p.TrangThai != "BaoTri") // Chỉ loại phòng đang bảo trì
                 .ToListAsync();
 
-            // 2. Lấy danh sách phòng đã được đặt trong khoảng thời gian
-            var phongDaDat = await _context.DatPhong_Phongs
+            // 2. Lấy danh sách phòng đã được đặt TRÙNG LỊCH trong khoảng thời gian
+            var phongDaDatTrungLich = await _context.DatPhong_Phongs
                 .Include(dp => dp.DatPhong)
                 .Where(dp =>
-                    // Chỉ lấy đặt phòng chưa hủy và chưa hoàn tất
+                    // Chỉ tính booking chưa hủy và chưa hoàn tất
                     dp.DatPhong.TrangThai != "DaHuy" &&
                     dp.DatPhong.TrangThai != "DaThanhToan" &&
-                    // Kiểm tra trùng thời gian
-                    (
-                        (dp.DatPhong.NgayNhanPhong < ngayTraPhong &&
-                         dp.DatPhong.NgayTraPhong > ngayNhanPhong)
-                    )
+                    // Kiểm tra trùng thời gian (overlap)
+                    dp.DatPhong.NgayNhanPhong < ngayTraPhong &&
+                    dp.DatPhong.NgayTraPhong > ngayNhanPhong
                 )
                 .Select(dp => dp.MaPhong)
                 .Distinct()
                 .ToListAsync();
 
-            // 3. Lọc phòng chưa được đặt
-            var phongKhaDung = phongTrong
-                .Where(p => !phongDaDat.Contains(p.MaPhong))
+            // 3. Phòng khả dụng = Tất cả phòng - Phòng có booking trùng lịch
+            var phongKhaDung = tatCaPhong
+                .Where(p => !phongDaDatTrungLich.Contains(p.MaPhong))
                 .Select(p => new PhongTrongDTO
                 {
                     MaPhong = p.MaPhong,
@@ -231,7 +199,8 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     SoNguoiToiDa = p.LoaiPhong != null ? p.LoaiPhong.SoNguoiToiDa : null,
                     DienTich = p.LoaiPhong != null ? p.LoaiPhong.DienTich : null,
                     MoTa = p.LoaiPhong != null ? p.LoaiPhong.MoTa : null,
-                    TenTang = p.Tang != null ? p.Tang.TenTang : null
+                    TenTang = p.Tang != null ? p.Tang.TenTang : null,
+                    MaLoaiPhong = p.MaLoaiPhong ?? 0
                 })
                 .OrderBy(p => p.SoPhong)
                 .ToList();

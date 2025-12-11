@@ -9,5 +9,8 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.dto.LoaiPhong
         public int? SoGiuong { get; set; }
         public int? DienTich { get; set; }
         public decimal? GiaMoiDem { get; set; }
+        
+        // Hình ảnh đại diện (ảnh đầu tiên)
+        public string? HinhAnhDauTien { get; set; }
     }
 }

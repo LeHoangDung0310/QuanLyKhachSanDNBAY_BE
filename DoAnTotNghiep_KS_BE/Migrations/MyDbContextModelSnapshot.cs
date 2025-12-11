@@ -419,12 +419,6 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.Property<string>("MoTa")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SoGiuong")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SoNguoiToiDa")
-                        .HasColumnType("int");
-
                     b.Property<string>("SoPhong")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -859,7 +853,7 @@ namespace DoAnTotNghiep_KS_BE.Migrations
                     b.HasOne("DoAnTotNghiep_KS_BE.Data.Entities.NguoiDung", "NguoiDung")
                         .WithMany("TaiKhoanNganHangs")
                         .HasForeignKey("MaNguoiDung")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("NguoiDung");

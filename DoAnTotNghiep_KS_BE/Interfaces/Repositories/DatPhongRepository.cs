@@ -146,7 +146,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             foreach (var chiTiet in createDTO.DanhSachPhong)
             {
                 var phong = phongs.First(p => p.MaPhong == chiTiet.MaPhong);
-                var soNguoiToiDa = phong.LoaiPhong?.SoNguoiToiDa ?? phong.SoNguoiToiDa ?? 2;
+                var soNguoiToiDa = phong.LoaiPhong?.SoNguoiToiDa ?? 2;
 
                 if (chiTiet.SoNguoi > soNguoiToiDa)
                 {
@@ -376,7 +376,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             foreach (var chiTiet in createDTO.DanhSachPhong)
             {
                 var phong = phongs.First(p => p.MaPhong == chiTiet.MaPhong);
-                var soNguoiToiDa = phong.LoaiPhong?.SoNguoiToiDa ?? phong.SoNguoiToiDa ?? 2; // SỬA: ToiDa không phải ToDa
+                var soNguoiToiDa = phong.LoaiPhong?.SoNguoiToiDa ?? 2;
 
                 if (chiTiet.SoNguoi > soNguoiToiDa)
                 {

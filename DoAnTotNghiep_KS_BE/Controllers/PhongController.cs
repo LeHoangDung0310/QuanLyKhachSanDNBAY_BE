@@ -38,10 +38,6 @@ namespace DoAnTotNghiep_KS_BE.Controllers
         public async Task<ActionResult> SearchPhongs(
             [FromQuery] string? soPhong,
             [FromQuery] int? maLoaiPhong,
-            [FromQuery] int? soGiuongMin,
-            [FromQuery] int? soGiuongMax,
-            [FromQuery] int? soNguoiToiDaMin,
-            [FromQuery] int? soNguoiToiDaMax,
             [FromQuery] string? trangThai,
             [FromQuery] int? maTang,
             [FromQuery] int pageNumber = 1,
@@ -58,33 +54,10 @@ namespace DoAnTotNghiep_KS_BE.Controllers
             if (pageNumber < 1) pageNumber = 1;
             if (pageSize < 1 || pageSize > 100) pageSize = 10;
 
-            // Validate khoảng giá trị
-            if (soGiuongMin.HasValue && soGiuongMin.Value < 0)
-            {
-                return BadRequest(new { message = "Số giường tối thiểu phải >= 0" });
-            }
-            if (soGiuongMax.HasValue && soGiuongMin.HasValue && soGiuongMax.Value < soGiuongMin.Value)
-            {
-                return BadRequest(new { message = "Số giường tối đa phải >= số giường tối thiểu" });
-            }
-
-            if (soNguoiToiDaMin.HasValue && soNguoiToiDaMin.Value < 0)
-            {
-                return BadRequest(new { message = "Số người tối đa tối thiểu phải >= 0" });
-            }
-            if (soNguoiToiDaMax.HasValue && soNguoiToiDaMin.HasValue && soNguoiToiDaMax.Value < soNguoiToiDaMin.Value)
-            {
-                return BadRequest(new { message = "Số người tối đa tối đa phải >= số người tối đa tối thiểu" });
-            }
-
             var searchDTO = new SearchPhongDTO
             {
                 SoPhong = soPhong,
                 MaLoaiPhong = maLoaiPhong,
-                SoGiuongMin = soGiuongMin,
-                SoGiuongMax = soGiuongMax,
-                SoNguoiToiDaMin = soNguoiToiDaMin,
-                SoNguoiToiDaMax = soNguoiToiDaMax,
                 TrangThai = trangThai,
                 MaTang = maTang,
                 PageNumber = pageNumber,

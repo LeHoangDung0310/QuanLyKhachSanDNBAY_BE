@@ -14,10 +14,6 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [StringLength(10)]
         public string? SoPhong { get; set; }
 
-        public int? SoGiuong { get; set; }
-
-        public int? SoNguoiToiDa { get; set; }
-
         public string? MoTa { get; set; }
 
         [StringLength(20)]

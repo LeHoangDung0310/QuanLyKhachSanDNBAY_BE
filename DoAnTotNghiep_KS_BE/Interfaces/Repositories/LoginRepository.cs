@@ -139,7 +139,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 var accessToken = GenerateAccessToken(user);
                 var refreshToken = GenerateRefreshToken();
 
-                // ✅ LƯU REFRESH TOKEN VỚI TRY-CATCH RIÊNG
+                // ✅ LƯU REFRESH TOKEN VỚI THỜI HẠN 30 NGÀY
                 try
                 {
                     var refreshTokenEntity = new RefreshToken
@@ -147,7 +147,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                         MaNguoiDung = user.MaNguoiDung,
                         Token = refreshToken,
                         NgayTao = DateTime.Now,
-                        NgayHetHan = DateTime.Now.AddDays(7),
+                        NgayHetHan = DateTime.Now.AddDays(30), // ← 30 ngày (thay vì 7 ngày)
                         DiaChi = ipAddress ?? "Unknown",
                         DaSuDung = false
                     };
@@ -253,17 +253,17 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 refreshTokenEntity.DaSuDung = true;
                 refreshTokenEntity.NgaySuDung = DateTime.Now;
 
-                // Generate new tokens
-                var newAccessToken = GenerateAccessToken(refreshTokenEntity.NguoiDung);
+                // ✅ TẠO TOKEN MỚI VỚI THỜI GIAN DÀI HƠN
+                var newAccessToken = GenerateAccessToken(refreshTokenEntity.NguoiDung); // 24 giờ
                 var newRefreshToken = GenerateRefreshToken();
 
-                // Save new refresh token
+                // ✅ LƯU REFRESH TOKEN MỚI VỚI THỜI HẠN 30 NGÀY
                 var newRefreshTokenEntity = new RefreshToken
                 {
                     MaNguoiDung = refreshTokenEntity.MaNguoiDung,
                     Token = newRefreshToken,
                     NgayTao = DateTime.Now,
-                    NgayHetHan = DateTime.Now.AddDays(7),
+                    NgayHetHan = DateTime.Now.AddDays(30), // ← 30 ngày
                     DiaChi = ipAddress
                 };
 
@@ -415,6 +415,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
         }
 
         // Helper methods
+        // ========== TẠO ACCESS TOKEN (TĂNG THỜI GIAN LÊN 24 GIỜ) ==========
         private string GenerateAccessToken(NguoiDung nguoiDung)
         {
             var secretKey = _configuration["AppSettings:SecretKey"];
@@ -422,12 +423,14 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             {
                 throw new InvalidOperationException("Secret key chưa dc cấu hình");
             }
-            //dung key de ma hoa
+
+            // Dùng key để mã hóa
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-            //tao credentials de ky token dua tren key va thuat toan HmacSha256
+
+            // Tạo credentials để ký token dựa trên key và thuật toán HmacSha256
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            //thong tin claim user
+            // Thông tin claim user
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, nguoiDung.MaNguoiDung.ToString()),
@@ -438,18 +441,19 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Unique token ID
             };
 
-            //tao token
+            // ✅ TẠO TOKEN VỚI THỜI GIAN 24 GIỜ (thay vì 30 phút)
             var token = new JwtSecurityToken(
                 issuer: "DoAnTotNghiep_KS",
                 audience: "DoAnTotNghiep_KS_Client",
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddHours(24), // ← 24 giờ
                 signingCredentials: credentials
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        // ========== TẠO REFRESH TOKEN (TĂNG LÊN 30 NGÀY) ==========
         private string GenerateRefreshToken()
         {
             var randomNumber = new byte[64];

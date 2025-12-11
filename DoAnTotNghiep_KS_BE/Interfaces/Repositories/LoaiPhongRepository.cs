@@ -26,7 +26,13 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     SoGiuong = lp.SoGiuong,
                     SoNguoiToiDa = lp.SoNguoiToiDa,
                     GiaMoiDem = lp.GiaMoiDem,
-                    MoTa = lp.MoTa
+                    MoTa = lp.MoTa,
+                    // Lấy URL ảnh đầu tiên từ bảng HinhAnhLPhong
+                    HinhAnhDauTien = _context.HinhAnhLPhongs
+                        .Where(h => h.MaLoaiPhong == lp.MaLoaiPhong)
+                        .OrderBy(h => h.MaHinhAnh)
+                        .Select(h => h.Url)
+                        .FirstOrDefault()
                 })
                 .ToListAsync();
         }
@@ -43,7 +49,13 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     SoGiuong = lp.SoGiuong,
                     SoNguoiToiDa = lp.SoNguoiToiDa,
                     GiaMoiDem = lp.GiaMoiDem,
-                    MoTa = lp.MoTa
+                    MoTa = lp.MoTa,
+                    // Lấy URL ảnh đầu tiên từ bảng HinhAnhLPhong
+                    HinhAnhDauTien = _context.HinhAnhLPhongs
+                        .Where(h => h.MaLoaiPhong == lp.MaLoaiPhong)
+                        .OrderBy(h => h.MaHinhAnh)
+                        .Select(h => h.Url)
+                        .FirstOrDefault()
                 })
                 .FirstOrDefaultAsync();
         }
