@@ -56,14 +56,31 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             var conLai = tongTien - daThanhToan;
 
             // 5. Validate số tiền thanh toán
-            if (createDTO.SoTien <= 0)
+            // Cho phép số tiền âm (hoàn tiền) hoặc dương (thanh toán)
+            if (createDTO.SoTien == 0)
             {
-                return (false, "Số tiền thanh toán phải lớn hơn 0", null);
+                return (false, "Số tiền không được bằng 0", null);
             }
 
-            if (createDTO.SoTien > conLai)
+            // Nếu là thanh toán (số dương)
+            if (createDTO.SoTien > 0)
             {
-                return (false, $"Số tiền thanh toán ({createDTO.SoTien:N0}đ) vượt quá số tiền còn lại ({conLai:N0}đ)", null);
+                if (createDTO.SoTien > conLai)
+                {
+                    return (false, $"Số tiền thanh toán ({createDTO.SoTien:N0}đ) vượt quá số tiền còn lại ({conLai:N0}đ)", null);
+                }
+            }
+            // Nếu là hoàn tiền (số âm)
+            else if (createDTO.SoTien < 0)
+            {
+                if (conLai >= 0)
+                {
+                    return (false, "Không thể hoàn tiền khi chưa thanh toán đủ", null);
+                }
+                if (createDTO.SoTien < conLai)
+                {
+                    return (false, $"Số tiền hoàn trả ({Math.Abs(createDTO.SoTien):N0}đ) vượt quá số tiền cần hoàn ({Math.Abs(conLai):N0}đ)", null);
+                }
             }
 
             // 6. Validate phương thức thanh toán
@@ -83,7 +100,11 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     SoTien = createDTO.SoTien,
                     PhuongThuc = createDTO.PhuongThuc,
                     ThoiGian = DateTime.Now,
-                    TrangThai = createDTO.PhuongThuc == "TienMat" ? "ThanhCong" : "DangCho", // Tiền mặt = thanh toán ngay
+                    // Số âm (hoàn tiền) luôn là ThanhCong vì lễ tân đã hoàn tiền trực tiếp
+                    // Số dương: TienMat -> ThanhCong, các PT khác -> DangCho
+                    TrangThai = createDTO.SoTien < 0
+                        ? "ThanhCong"
+                        : (createDTO.PhuongThuc == "TienMat" ? "ThanhCong" : "DangCho"), // Tiền mặt = thanh toán ngay
                     NgayTao = DateTime.Now
                 };
 
@@ -109,9 +130,11 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     DaThanhToan = tongDaThanhToan,
                     ConLai = tongTien - tongDaThanhToan,
                     TrangThai = thanhToan.TrangThai,
-                    Message = thanhToan.TrangThai == "ThanhCong"
-                        ? "Thanh toán thành công!"
-                        : "Đang chờ xác nhận thanh toán"
+                    Message = createDTO.SoTien < 0
+                        ? $"Đã xác nhận hoàn trả {Math.Abs(createDTO.SoTien):N0}đ cho khách hàng"
+                        : (thanhToan.TrangThai == "ThanhCong"
+                            ? "Thanh toán thành công!"
+                            : "Đang chờ xác nhận thanh toán")
                 };
 
                 return (true, response.Message!, response);

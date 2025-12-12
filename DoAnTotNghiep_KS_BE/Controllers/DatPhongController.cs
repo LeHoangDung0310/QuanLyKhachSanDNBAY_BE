@@ -395,6 +395,53 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 });
             }
         }
+
+        // PUT: api/DatPhong/{id}/DoiPhong
+        [HttpPut("{id}/DoiPhong")]
+        [Authorize(Roles = "Admin,LeTan")]
+        public async Task<IActionResult> DoiPhong(int id, [FromBody] DoiPhongRequestDTO request)
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int leTanId))
+                {
+                    return Unauthorized(new { success = false, message = "Unauthorized" });
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Dữ liệu không hợp lệ",
+                        errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)
+                    });
+                }
+
+                var (success, message, data) = await _datPhongRepository.DoiPhongAsync(id, request, leTanId);
+
+                if (!success)
+                {
+                    return BadRequest(new { success = false, message });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    data,
+                    message
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi server: " + ex.Message
+                });
+            }
+        }
     }
 
     // Request model

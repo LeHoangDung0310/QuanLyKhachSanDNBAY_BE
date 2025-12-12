@@ -49,7 +49,9 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     MaTang = p.MaTang,
                     TenTang = p.Tang != null ? p.Tang.TenTang : null,
                     MaLoaiPhong = p.MaLoaiPhong,
-                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null
+                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null,
+                    GiaMoiDem = p.LoaiPhong != null ? p.LoaiPhong.GiaMoiDem : null,
+                    SoNguoiToiDa = p.LoaiPhong != null ? p.LoaiPhong.SoNguoiToiDa : null
                 })
                 .FirstOrDefaultAsync();
         }
@@ -103,7 +105,9 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                     MaTang = p.MaTang,
                     TenTang = p.Tang != null ? p.Tang.TenTang : null,
                     MaLoaiPhong = p.MaLoaiPhong,
-                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null
+                    TenLoaiPhong = p.LoaiPhong != null ? p.LoaiPhong.TenLoaiPhong : null,
+                    GiaMoiDem = p.LoaiPhong != null ? p.LoaiPhong.GiaMoiDem : null,
+                    SoNguoiToiDa = p.LoaiPhong != null ? p.LoaiPhong.SoNguoiToiDa : null
                 })
                 .ToListAsync();
 

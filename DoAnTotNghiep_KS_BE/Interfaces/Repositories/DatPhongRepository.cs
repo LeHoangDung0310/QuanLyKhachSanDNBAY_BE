@@ -632,5 +632,137 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
 
             return (true, "Check-out thành công");
         }
+
+        // ĐỔI PHÒNG
+        public async Task<(bool success, string message, DoiPhongResponseDTO? data)> DoiPhongAsync(
+            int maDatPhong,
+            DoiPhongRequestDTO request,
+            int maLeTan)
+        {
+            // 1. Kiểm tra đặt phòng tồn tại và đang sử dụng
+            var datPhong = await _context.DatPhongs
+                .Include(dp => dp.DatPhong_Phongs)
+                    .ThenInclude(dpp => dpp.Phong)
+                        .ThenInclude(p => p!.LoaiPhong)
+                .FirstOrDefaultAsync(dp => dp.MaDatPhong == maDatPhong);
+
+            if (datPhong == null)
+            {
+                return (false, "Đặt phòng không tồn tại", null);
+            }
+
+            if (datPhong.TrangThai != "DangSuDung")
+            {
+                return (false, "Chỉ có thể đổi phòng khi đang sử dụng (đã check-in)", null);
+            }
+
+            // 2. Kiểm tra phòng cũ có trong đặt phòng không
+            var phongCuRecord = datPhong.DatPhong_Phongs?
+                .FirstOrDefault(dpp => dpp.MaPhong == request.MaPhongCu);
+
+            if (phongCuRecord == null)
+            {
+                return (false, "Phòng cũ không có trong đặt phòng này", null);
+            }
+
+            // 3. Kiểm tra phòng mới tồn tại
+            var phongMoi = await _context.Phongs
+                .Include(p => p.LoaiPhong)
+                .FirstOrDefaultAsync(p => p.MaPhong == request.MaPhongMoi);
+
+            if (phongMoi == null)
+            {
+                return (false, "Phòng mới không tồn tại", null);
+            }
+
+            // 4. Kiểm tra phòng mới đang trống
+            if (phongMoi.TrangThai != "Trong")
+            {
+                return (false, $"Phòng {phongMoi.SoPhong} hiện không khả dụng", null);
+            }
+
+            // 5. Kiểm tra phòng mới có bị đặt trong khoảng thời gian còn lại không
+            var ngayHienTai = DateTime.Now.Date;
+            var phongBiTrung = await KiemTraPhongTrongAsync(
+                new List<int> { request.MaPhongMoi },
+                ngayHienTai,
+                datPhong.NgayTraPhong
+            );
+
+            if (phongBiTrung.Any())
+            {
+                return (false, $"Phòng {phongMoi.SoPhong} đã được đặt trong thời gian còn lại", null);
+            }
+
+            // 6. Tính toán phí
+            var phongCu = phongCuRecord.Phong!;
+            var giaPhongCu = phongCu.LoaiPhong?.GiaMoiDem ?? 0;
+            var giaPhongMoi = phongMoi.LoaiPhong?.GiaMoiDem ?? 0;
+
+            var soNgayConLai = (datPhong.NgayTraPhong.Date - ngayHienTai).Days;
+            if (soNgayConLai < 1) soNgayConLai = 1; // Tối thiểu 1 ngày
+
+            var cungLoaiPhong = phongCu.MaLoaiPhong == phongMoi.MaLoaiPhong;
+            var phiChenhLech = cungLoaiPhong ? 0 : (giaPhongMoi - giaPhongCu) * soNgayConLai;
+
+            // 7. Thực hiện đổi phòng
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                // Cập nhật trạng thái phòng cũ về "Trong"
+                phongCu.TrangThai = "Trong";
+
+                // Cập nhật trạng thái phòng mới sang "DangSuDung"
+                phongMoi.TrangThai = "DangSuDung";
+
+                // Cập nhật thông tin trong DatPhong_Phong
+                phongCuRecord.MaPhong = request.MaPhongMoi;
+
+                // Nếu có phí chênh lệch, tạo bản ghi thanh toán
+                if (phiChenhLech != 0)
+                {
+                    var thanhToan = new Data.Entities.ThanhToan
+                    {
+                        MaDatPhong = maDatPhong,
+                        SoTien = phiChenhLech,
+                        PhuongThuc = "ChuyenKhoan",
+                        TrangThai = phiChenhLech > 0 ? "ChuaThanhToan" : "DaHoanTra",
+                        ThoiGian = DateTime.Now,
+                        NgayTao = DateTime.Now
+                    };
+                    _context.ThanhToans.Add(thanhToan);
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                var response = new DoiPhongResponseDTO
+                {
+                    MaDatPhong = maDatPhong,
+                    MaPhongCu = request.MaPhongCu,
+                    SoPhongCu = phongCu.SoPhong,
+                    MaPhongMoi = request.MaPhongMoi,
+                    SoPhongMoi = phongMoi.SoPhong,
+                    CungLoaiPhong = cungLoaiPhong,
+                    GiaPhongCu = giaPhongCu,
+                    GiaPhongMoi = giaPhongMoi,
+                    SoNgayConLai = soNgayConLai,
+                    PhiChenhLech = phiChenhLech,
+                    ThongBao = cungLoaiPhong
+                        ? "Đổi phòng cùng loại, không phụ thu"
+                        : phiChenhLech > 0
+                            ? $"Phụ thu thêm {phiChenhLech:N0}đ cho {soNgayConLai} ngày còn lại"
+                            : $"Hoàn trả {Math.Abs(phiChenhLech):N0}đ cho {soNgayConLai} ngày còn lại",
+                    ThoiGianDoiPhong = DateTime.Now
+                };
+
+                return (true, "Đổi phòng thành công", response);
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                return (false, $"Lỗi khi đổi phòng: {ex.Message}", null);
+            }
+        }
     }
 }

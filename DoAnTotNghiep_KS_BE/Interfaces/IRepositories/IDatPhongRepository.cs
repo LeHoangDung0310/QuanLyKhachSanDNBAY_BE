@@ -35,5 +35,11 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
 
         // Check-out
         Task<(bool success, string message)> CheckOutAsync(int maDatPhong, int maLeTan);
+
+        // Đổi phòng
+        Task<(bool success, string message, DoiPhongResponseDTO? data)> DoiPhongAsync(
+            int maDatPhong,
+            DoiPhongRequestDTO request,
+            int maLeTan);
     }
 }
