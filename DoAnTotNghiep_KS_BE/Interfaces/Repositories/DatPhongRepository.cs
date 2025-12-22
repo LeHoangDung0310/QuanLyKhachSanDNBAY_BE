@@ -338,7 +338,8 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 return (false, "Ngày trả phòng phải sau ngày nhận phòng", null);
             }
 
-            // 2. Kiểm tra phòng tồn tại và trạng thái
+
+            // 2. Kiểm tra phòng tồn tại và loại bỏ phòng bảo trì
             var danhSachMaPhong = createDTO.DanhSachPhong.Select(p => p.MaPhong).ToList();
             var phongs = await _context.Phongs
                 .Include(p => p.LoaiPhong)
@@ -350,11 +351,12 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 return (false, "Một số phòng không tồn tại", null);
             }
 
-            var phongKhongKhaDung = phongs.Where(p => p.TrangThai != "Trong").ToList();
-            if (phongKhongKhaDung.Any())
+            // Loại bỏ chỉ phòng đang bảo trì
+            var phongBaoTri = phongs.Where(p => p.TrangThai == "BaoTri").ToList();
+            if (phongBaoTri.Any())
             {
-                var soPhong = string.Join(", ", phongKhongKhaDung.Select(p => p.SoPhong));
-                return (false, $"Phòng {soPhong} hiện không khả dụng", null);
+                var soPhong = string.Join(", ", phongBaoTri.Select(p => p.SoPhong));
+                return (false, $"Phòng {soPhong} hiện đang bảo trì, không khả dụng", null);
             }
 
             // 3. Kiểm tra phòng trống trong khoảng thời gian
