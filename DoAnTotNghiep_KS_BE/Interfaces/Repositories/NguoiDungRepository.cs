@@ -125,6 +125,52 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
                 .FirstOrDefaultAsync();
         }
 
+        // Lấy thông tin người dùng theo email (auto-fill khi đặt phòng trực tiếp)
+        public async Task<NguoiDungDTO?> GetNguoiDungByEmailAsync(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email)) return null;
+            var emailNorm = email.Trim().ToLower();
+            return await _context.NguoiDungs
+                .Include(n => n.PhuongXa)
+                    .ThenInclude(x => x!.Huyen)
+                    .ThenInclude(h => h!.Tinh)
+                .Include(n => n.TaiKhoanNganHangs)
+                .Where(n => n.Email.ToLower() == emailNorm)
+                .Select(n => new NguoiDungDTO
+                {
+                    MaNguoiDung = n.MaNguoiDung,
+                    Email = n.Email,
+                    VaiTro = n.VaiTro,
+                    HoTen = n.HoTen,
+                    SoDienThoai = n.SoDienThoai,
+                    DiaChiChiTiet = n.DiaChiChiTiet,
+                    MaPhuongXa = n.MaPhuongXa,
+                    TenPhuongXa = n.PhuongXa != null ? n.PhuongXa.TenPhuongXa : null,
+                    MaHuyen = n.PhuongXa != null && n.PhuongXa.Huyen != null ? n.PhuongXa.Huyen.MaHuyen : null,
+                    TenHuyen = n.PhuongXa != null && n.PhuongXa.Huyen != null ? n.PhuongXa.Huyen.TenHuyen : null,
+                    MaTinh = n.PhuongXa != null && n.PhuongXa.Huyen != null && n.PhuongXa.Huyen.Tinh != null ? n.PhuongXa.Huyen.Tinh.MaTinh : null,
+                    TenTinh = n.PhuongXa != null && n.PhuongXa.Huyen != null && n.PhuongXa.Huyen.Tinh != null ? n.PhuongXa.Huyen.Tinh.TenTinh : null,
+                    AnhDaiDien = n.AnhDaiDien,
+                    TrangThai = n.TrangThai,
+                    NgayTao = n.NgayTao,
+                    SoCCCD = n.SoCCCD,
+                    NgayCapCCCD = n.NgayCapCCCD,
+                    NoiCapCCCD = n.NoiCapCCCD,
+                    NgaySinh = n.NgaySinh,
+                    GioiTinh = n.GioiTinh,
+                    NganHang = n.TaiKhoanNganHangs != null && n.TaiKhoanNganHangs.Any()
+                        ? n.TaiKhoanNganHangs.FirstOrDefault()!.NganHang
+                        : null,
+                    SoTaiKhoan = n.TaiKhoanNganHangs != null && n.TaiKhoanNganHangs.Any()
+                        ? n.TaiKhoanNganHangs.FirstOrDefault()!.SoTaiKhoan
+                        : null,
+                    TenChuTK = n.TaiKhoanNganHangs != null && n.TaiKhoanNganHangs.Any()
+                        ? n.TaiKhoanNganHangs.FirstOrDefault()!.TenChuTK
+                        : null
+                })
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<(IEnumerable<NguoiDungDTO> data, int total)> SearchNguoiDungsAsync(SearchNguoiDungDTO searchDTO)
         {
             var query = _context.NguoiDungs

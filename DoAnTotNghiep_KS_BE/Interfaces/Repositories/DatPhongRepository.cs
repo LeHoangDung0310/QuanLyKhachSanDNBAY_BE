@@ -322,7 +322,7 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             };
         }
 
-        // METHOD MỚI CHO ĐặT PHÒNG TRỰC TIẾP - ĐÃ SỬA
+        // METHOD MỚI CHO ĐặT PHÒNG TRỰC TIẾP
         public async Task<(bool success, string message, DatPhongTrucTiepResponseDTO? data)> CreateDatPhongTrucTiepAsync(
             int maLeTan,
             CreateDatPhongTrucTiepDTO createDTO)

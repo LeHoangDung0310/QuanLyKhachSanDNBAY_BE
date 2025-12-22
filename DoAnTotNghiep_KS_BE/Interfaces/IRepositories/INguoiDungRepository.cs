@@ -17,5 +17,8 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
         Task<bool> UpdateProfileAsync(int maNguoiDung, UpdateProfileDTO updateDTO);
         Task<(bool Success, string Message)> ChangePasswordAsync(int maNguoiDung, ChangePasswordDTO changePasswordDTO);
         Task<bool> UpdateAvatarAsync(int maNguoiDung, string avatarUrl);
+
+        // Lấy thông tin người dùng theo email (auto-fill khi đặt phòng trực tiếp)
+        Task<NguoiDungDTO?> GetNguoiDungByEmailAsync(string email);
     }
 }

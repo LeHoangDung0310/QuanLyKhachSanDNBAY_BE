@@ -15,6 +15,87 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.Repositories
             _context = context;
         }
 
+        // ✅ HỦY ĐẶT PHÒNG SAU CHECK-IN (chỉ trong ngày đầu tiên)
+        public async Task<(bool success, string message, decimal phiGiu, decimal tienHoan)> HuySauCheckInAsync(
+            int maDatPhong,
+            int maNguoiDung,
+            string lyDo,
+            string? nganHang,
+            string? soTaiKhoan,
+            string? tenChuTK)
+        {
+            var datPhong = await _context.DatPhongs
+                .Include(dp => dp.DatPhong_Phongs)
+                    .ThenInclude(dpp => dpp.Phong)
+                        .ThenInclude(p => p.LoaiPhong)
+                .Include(dp => dp.ThanhToans)
+                .FirstOrDefaultAsync(dp => dp.MaDatPhong == maDatPhong && dp.MaKhachHang == maNguoiDung);
+
+            if (datPhong == null)
+                return (false, "Không tìm thấy đặt phòng hoặc bạn không có quyền hủy", 0, 0);
+
+            if (datPhong.TrangThai != "DangSuDung")
+                return (false, "Chỉ có thể hủy khi khách đã check-in", 0, 0);
+
+            if (DateTime.Now.Date != datPhong.NgayNhanPhong.Date)
+                return (false, "Chỉ được hủy trong ngày đầu tiên nhận phòng", 0, 0);
+
+            var soNgayO = (datPhong.NgayTraPhong - datPhong.NgayNhanPhong).Days;
+            if (soNgayO < 1)
+                return (false, "Thông tin ngày ở không hợp lệ", 0, 0);
+
+            var giaMoiDem = datPhong.DatPhong_Phongs?.Sum(dpp => dpp.Phong?.LoaiPhong?.GiaMoiDem ?? 0) ?? 0;
+            var phiGiu = giaMoiDem; // 100% tiền phòng ngày đầu tiên
+            var daThanhToan = datPhong.ThanhToans?.Where(tt => tt.TrangThai == "ThanhCong").Sum(tt => tt.SoTien) ?? 0;
+            var tongTien = giaMoiDem * soNgayO;
+            var tienHoan = daThanhToan - phiGiu;
+            if (tienHoan < 0) tienHoan = 0;
+
+            // Xử lý thông tin ngân hàng
+            var taiKhoanNH = await _context.TaiKhoanNganHangs
+                .FirstOrDefaultAsync(tk => tk.MaNguoiDung == maNguoiDung);
+
+            if (taiKhoanNH == null && (string.IsNullOrEmpty(nganHang) || string.IsNullOrEmpty(soTaiKhoan) || string.IsNullOrEmpty(tenChuTK)))
+            {
+                return (false, "Vui lòng cung cấp thông tin tài khoản ngân hàng để nhận hoàn tiền", 0, 0);
+            }
+
+            if (taiKhoanNH == null && !string.IsNullOrEmpty(nganHang))
+            {
+                taiKhoanNH = new TaiKhoanNganHang
+                {
+                    MaNguoiDung = maNguoiDung,
+                    NganHang = nganHang,
+                    SoTaiKhoan = soTaiKhoan,
+                    TenChuTK = tenChuTK
+                };
+                _context.TaiKhoanNganHangs.Add(taiKhoanNH);
+                await _context.SaveChangesAsync();
+            }
+            else if (taiKhoanNH != null && !string.IsNullOrEmpty(nganHang))
+            {
+                taiKhoanNH.NganHang = nganHang;
+                taiKhoanNH.SoTaiKhoan = soTaiKhoan;
+                taiKhoanNH.TenChuTK = tenChuTK;
+                await _context.SaveChangesAsync();
+            }
+
+            // Tạo yêu cầu hủy
+            var huyDatPhong = new HuyDatPhong
+            {
+                MaDatPhong = maDatPhong,
+                LyDo = lyDo,
+                NgayYeuCau = DateTime.Now,
+                TrangThai = "ChoDuyet",
+                PhiGiu = phiGiu
+            };
+            _context.HuyDatPhongs.Add(huyDatPhong);
+            datPhong.TrangThai = "DaHuy";
+            await _context.SaveChangesAsync();
+
+            return (true, $"Hủy thành công. Phí giữ: {phiGiu:N0}đ, Tiền hoàn: {tienHoan:N0}đ", phiGiu, tienHoan);
+        }
+
         // ✅ KIỂM TRA ĐIỀU KIỆN HỦY (giữ nguyên)
         public async Task<(bool canCancel, string message, decimal phiGiu, decimal tienHoan)> KiemTraDieuKienHuyAsync(int maDatPhong)
         {

@@ -27,10 +27,14 @@ namespace DoAnTotNghiep_KS_BE.Data.Entities
         [Column(TypeName = "decimal(12,2)")]
         public decimal? PhiGiu { get; set; }
 
+        // Thêm trường số tiền hoàn lại
+
         public DateTime? NgayXuLy { get; set; }
 
         [ForeignKey("NguoiDuyet")]
         public int? MaNguoiDuyet { get; set; }
+
+        // Thêm trường người yêu cầu hủy
 
         [StringLength(255)]
         public string? GhiChu { get; set; }

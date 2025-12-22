@@ -10,6 +10,21 @@ namespace DoAnTotNghiep_KS_BE.Controllers
     [ApiController]
     public class NguoiDungController : ControllerBase
     {
+        // (Đã có khai báo và constructor ở trên, xóa lặp)
+
+        // GET: api/NguoiDung/ByEmail?email=abc@example.com
+        [HttpGet("ByEmail")]
+        public async Task<ActionResult> GetNguoiDungByEmail([FromQuery] string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return BadRequest(new { message = "Email không hợp lệ" });
+
+            var nguoiDung = await _nguoiDungRepository.GetNguoiDungByEmailAsync(email);
+            if (nguoiDung == null)
+                return NotFound(new { message = "Không tìm thấy người dùng với email này" });
+
+            return Ok(new { success = true, data = nguoiDung });
+        }
         private readonly INguoiDungRepository _nguoiDungRepository;
 
         public NguoiDungController(INguoiDungRepository nguoiDungRepository)
