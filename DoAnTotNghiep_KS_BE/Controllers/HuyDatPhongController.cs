@@ -70,6 +70,35 @@ namespace DoAnTotNghiep_KS_BE.Controllers
             });
         }
 
+        // ✅ HỦY ĐẶT PHÒNG SAU CHECK-IN (chỉ trong ngày đầu tiên)
+        [HttpPost("HuySauCheckIn/{maDatPhong}")]
+        [Authorize(Roles = "LeTan")]
+        public async Task<IActionResult> HuySauCheckIn(int maDatPhong)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var roleClaim = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            {
+                return Unauthorized(new { success = false, message = "Unauthorized" });
+            }
+            bool isLeTan = roleClaim != null && (roleClaim.Contains("LeTan") || roleClaim.Contains("Admin"));
+            var (success, message, phiGiu, tienHoan, khachHang, phongList) = await _huyDatPhongRepository.HuySauCheckInAsync(
+                maDatPhong,
+                userId,
+                isLeTan
+            );
+            if (!success)
+            {
+                return BadRequest(new { success = false, message });
+            }
+            return Ok(new
+            {
+                success = true,
+                message,
+                data = new { phiGiu, tienHoan, khachHang, phongList }
+            });
+        }
+
         // ✅ LẤY TẤT CẢ YÊU CẦU HỦY (LỄ TÂN/ADMIN)
         [HttpGet]
         [Authorize(Roles = "Admin,LeTan")]

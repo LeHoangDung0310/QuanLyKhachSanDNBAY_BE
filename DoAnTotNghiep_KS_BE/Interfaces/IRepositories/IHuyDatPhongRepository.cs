@@ -34,5 +34,10 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
 
         // ✅ THÊM MỚI - Admin xác nhận đã hoàn tiền
         Task<(bool success, string message)> XacNhanHoanTienAsync(int maHoanTien, int maQuanTri, string? ghiChu);
+
+        Task<(bool success, string message, decimal phiGiu, decimal tienHoan, object khachHang, List<object> phongList)> HuySauCheckInAsync(
+            int maDatPhong,
+            int maNguoiDung,
+            bool isLeTan);
     }
 }
