@@ -7,7 +7,8 @@ namespace DoAnTotNghiep_KS_BE.Interfaces.IRepositories
     {
         Task<IEnumerable<PhongDTO>> GetAllPhongsAsync();
         Task<PhongDTO?> GetPhongByIdAsync(int maPhong);
-        Task<(IEnumerable<PhongDTO> data, int total)> SearchPhongsAsync(SearchPhongDTO searchDTO);
+        Task<(IEnumerable<PhongDTO> data, int total)> SearchPhongsAsync(SearchPhongDTO searchDTO, DateTime ngayNhanPhong,
+            DateTime ngayTraPhong);
         Task<Phong> CreatePhongAsync(CreatePhongDTO createPhongDTO);
         Task<bool> UpdatePhongAsync(int maPhong, UpdatePhongDTO updatePhongDTO);
         Task<bool> DeletePhongAsync(int maPhong);

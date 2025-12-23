@@ -35,48 +35,26 @@ namespace DoAnTotNghiep_KS_BE.Controllers
 
         // GET: api/Phong/Search
         [HttpGet("Search")]
-        public async Task<ActionResult> SearchPhongs(
-            [FromQuery] string? soPhong,
-            [FromQuery] int? maLoaiPhong,
-            [FromQuery] string? trangThai,
-            [FromQuery] int? maTang,
-            [FromQuery] int pageNumber = 1,
-            [FromQuery] int pageSize = 10)
+        public async Task<IActionResult> SearchPhongs(
+        [FromQuery] SearchPhongDTO searchDTO,
+        [FromQuery] DateTime? ngayNhanPhong,
+        [FromQuery] DateTime? ngayTraPhong)
         {
-            // Validate trạng thái nếu có
-            if (!string.IsNullOrWhiteSpace(trangThai) &&
-                !new[] { "Trong", "DaDat", "DangSuDung", "BaoTri" }.Contains(trangThai))
-            {
-                return BadRequest(new { message = "Trạng thái không hợp lệ" });
-            }
+            // ✅ KHÔNG CHỌN NGÀY → HÔM NAY
+            var start = ngayNhanPhong?.Date ?? DateTime.Today;
+            var end = ngayTraPhong?.Date ?? DateTime.Today.AddDays(1);
 
-            // Validate phân trang
-            if (pageNumber < 1) pageNumber = 1;
-            if (pageSize < 1 || pageSize > 100) pageSize = 10;
-
-            var searchDTO = new SearchPhongDTO
-            {
-                SoPhong = soPhong,
-                MaLoaiPhong = maLoaiPhong,
-                TrangThai = trangThai,
-                MaTang = maTang,
-                PageNumber = pageNumber,
-                PageSize = pageSize
-            };
-
-            var (data, total) = await _phongRepository.SearchPhongsAsync(searchDTO);
+            var (data, total) = await _phongRepository.SearchPhongsAsync(
+                searchDTO,
+                start,
+                end
+            );
 
             return Ok(new
             {
                 success = true,
-                data = data,
-                pagination = new
-                {
-                    currentPage = pageNumber,
-                    pageSize = pageSize,
-                    totalItems = total,
-                    totalPages = (int)Math.Ceiling(total / (double)pageSize)
-                }
+                data,
+                total
             });
         }
 
