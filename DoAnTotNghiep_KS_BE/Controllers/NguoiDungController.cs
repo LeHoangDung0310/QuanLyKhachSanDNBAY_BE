@@ -315,6 +315,7 @@ namespace DoAnTotNghiep_KS_BE.Controllers
         }
 
         // POST: api/NguoiDung/Profile/UploadAvatar
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpPost("Profile/UploadAvatar")]
         [Authorize]
         public async Task<ActionResult> UploadAvatar([FromForm] IFormFile file)

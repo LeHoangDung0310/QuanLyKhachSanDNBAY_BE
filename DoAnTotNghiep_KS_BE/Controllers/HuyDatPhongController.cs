@@ -19,10 +19,35 @@ namespace DoAnTotNghiep_KS_BE.Controllers
 
         // ✅ KIỂM TRA ĐIỀU KIỆN HỦY (giữ nguyên)
         [HttpGet("KiemTraDieuKien/{maDatPhong}")]
-        [Authorize]
+        [Authorize(Roles = "LeTan,Admin")]
         public async Task<IActionResult> KiemTraDieuKienHuy(int maDatPhong)
         {
             var (canCancel, message, phiGiu, tienHoan) = await _huyDatPhongRepository.KiemTraDieuKienHuyAsync(maDatPhong);
+
+            // Lấy thêm thông tin đặt phòng để trả về cho FE (fix: luôn trả về đủ thông tin khách hàng)
+            var datPhongRepo = HttpContext.RequestServices.GetService(typeof(DoAnTotNghiep_KS_BE.Interfaces.IRepositories.IDatPhongRepository)) as DoAnTotNghiep_KS_BE.Interfaces.IRepositories.IDatPhongRepository;
+            object khachHang = null;
+            var phongList = new List<object>();
+            if (datPhongRepo != null)
+            {
+                var datPhong = await datPhongRepo.GetDatPhongByIdAsync(maDatPhong);
+                if (datPhong != null)
+                {
+                    // Chỉ lấy thông tin từ các trường có sẵn trong DatPhongDTO
+                    string hoTen = datPhong.TenKhachHang ?? "";
+                    string sdtKH = datPhong.SoDienThoai ?? "";
+                    khachHang = new
+                    {
+                        HoTen = hoTen,
+                        SoDienThoai = sdtKH
+                    };
+                    phongList = datPhong.DanhSachPhong?.Select(p => new
+                    {
+                        SoPhong = p.SoPhong,
+                        TenLoaiPhong = p.TenLoaiPhong
+                    }).Cast<object>().ToList() ?? new List<object>();
+                }
+            }
 
             return Ok(new
             {
@@ -32,7 +57,9 @@ namespace DoAnTotNghiep_KS_BE.Controllers
                 {
                     canCancel,
                     phiGiu,
-                    tienHoan
+                    tienHoan,
+                    khachHang,
+                    phongList
                 }
             });
         }
@@ -75,29 +102,62 @@ namespace DoAnTotNghiep_KS_BE.Controllers
         [Authorize(Roles = "LeTan")]
         public async Task<IActionResult> HuySauCheckIn(int maDatPhong)
         {
+            // 🔥 BẮT BUỘC: LẤY USER ID TỪ TOKEN
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var roleClaim = User.FindFirst(ClaimTypes.Role)?.Value;
-            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int leTanId))
             {
                 return Unauthorized(new { success = false, message = "Unauthorized" });
             }
-            bool isLeTan = roleClaim != null && (roleClaim.Contains("LeTan") || roleClaim.Contains("Admin"));
-            var (success, message, phiGiu, tienHoan, khachHang, phongList) = await _huyDatPhongRepository.HuySauCheckInAsync(
+
+            // 🔥 VÌ API NÀY CHỈ CHO LỄ TÂN
+            bool isLeTan = true;
+
+            var (success, message, phiGiu, tienHoan, khachHangRaw, phongList) = await _huyDatPhongRepository.HuySauCheckInAsync(
                 maDatPhong,
-                userId,
+                leTanId,
                 isLeTan
             );
+
+            // Fix: Đảm bảo khachHang luôn có đủ thông tin
+            object khachHang = null;
+            if (khachHangRaw != null)
+            {
+                // khachHangRaw có thể là dynamic hoặc anonymous object
+                var hoTen = khachHangRaw.GetType().GetProperty("HoTen")?.GetValue(khachHangRaw, null) as string
+                    ?? khachHangRaw.GetType().GetProperty("TenKhachHang")?.GetValue(khachHangRaw, null) as string
+                    ?? "";
+                var tenKH = khachHangRaw.GetType().GetProperty("TenKhachHang")?.GetValue(khachHangRaw, null) as string
+                    ?? khachHangRaw.GetType().GetProperty("HoTen")?.GetValue(khachHangRaw, null) as string
+                    ?? "";
+                var sdtKH = khachHangRaw.GetType().GetProperty("SoDienThoai")?.GetValue(khachHangRaw, null) as string
+                    ?? "";
+                khachHang = new
+                {
+                    HoTen = hoTen,
+                    TenKhachHang = tenKH,
+                    SoDienThoai = sdtKH
+                };
+            }
+
             if (!success)
             {
                 return BadRequest(new { success = false, message });
             }
+
             return Ok(new
             {
                 success = true,
                 message,
-                data = new { phiGiu, tienHoan, khachHang, phongList }
+                data = new
+                {
+                    phiGiu,
+                    tienHoan,
+                    khachHang,
+                    phongList
+                }
             });
         }
+
 
         // ✅ LẤY TẤT CẢ YÊU CẦU HỦY (LỄ TÂN/ADMIN)
         [HttpGet]

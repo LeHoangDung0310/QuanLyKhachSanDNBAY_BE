@@ -78,55 +78,35 @@
     ]
   },
   {
-    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
-    "Method": "GetHinhAnhPhongs",
-    "RelativePath": "api/HinhAnhPhong",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
-    "Method": "CreateHinhAnhPhong",
-    "RelativePath": "api/HinhAnhPhong",
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "CreateDatPhong",
+    "RelativePath": "api/DatPhong",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "createHinhAnhPhongDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.CreateHinhAnhPhongDTO",
+        "Name": "createDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DatPhong.CreateDatPhongDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
-    "Method": "GetHinhAnhPhong",
-    "RelativePath": "api/HinhAnhPhong/{id}",
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "GetAllDatPhong",
+    "RelativePath": "api/DatPhong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "GetDatPhongById",
+    "RelativePath": "api/DatPhong/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -137,22 +117,44 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
-    "Method": "UpdateHinhAnhPhong",
-    "RelativePath": "api/HinhAnhPhong/{id}",
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "CheckIn",
+    "RelativePath": "api/DatPhong/{id}/CheckIn",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "CheckOut",
+    "RelativePath": "api/DatPhong/{id}/CheckOut",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "DoiPhong",
+    "RelativePath": "api/DatPhong/{id}/DoiPhong",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -163,17 +165,225 @@
         "IsRequired": true
       },
       {
-        "Name": "updateHinhAnhPhongDTO",
-        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.UpdateHinhAnhPhongDTO",
+        "Name": "request",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DatPhong.DoiPhongRequestDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
-    "Method": "DeleteHinhAnhPhong",
-    "RelativePath": "api/HinhAnhPhong/{id}",
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "HuyDatPhong",
+    "RelativePath": "api/DatPhong/{id}/Huy",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "GetDatPhongCuaToi",
+    "RelativePath": "api/DatPhong/CuaToi",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "KiemTraPhongTrong",
+    "RelativePath": "api/DatPhong/KiemTraPhongTrong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "DoAnTotNghiep_KS_BE.Controllers.KiemTraPhongTrongRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "KiemTraThongTinNguoiDung",
+    "RelativePath": "api/DatPhong/KiemTraThongTin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DatPhongController",
+    "Method": "CreateDatPhongTrucTiep",
+    "RelativePath": "api/DatPhong/TrucTiep",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.DatPhong.CreateDatPhongTrucTiepDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DiaChiController",
+    "Method": "GetHuyens",
+    "RelativePath": "api/DiaChi/Huyen",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maTinh",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DiaChiController",
+    "Method": "GetPhuongXas",
+    "RelativePath": "api/DiaChi/PhuongXa",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maHuyen",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.DiaChiController",
+    "Method": "GetTinhs",
+    "RelativePath": "api/DiaChi/Tinh",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhLPhongController",
+    "Method": "GetHinhAnhLPhongs",
+    "RelativePath": "api/HinhAnhLPhong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhLPhong.HinhAnhLPhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhLPhongController",
+    "Method": "CreateHinhAnhLPhong",
+    "RelativePath": "api/HinhAnhLPhong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "MaLoaiPhong",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhLPhong.HinhAnhLPhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhLPhongController",
+    "Method": "GetHinhAnhLPhong",
+    "RelativePath": "api/HinhAnhLPhong/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhLPhong.HinhAnhLPhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhLPhongController",
+    "Method": "UpdateHinhAnhLPhong",
+    "RelativePath": "api/HinhAnhLPhong/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateHinhAnhLPhongDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhLPhong.UpdateHinhAnhLPhongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhLPhongController",
+    "Method": "DeleteHinhAnhLPhong",
+    "RelativePath": "api/HinhAnhLPhong/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -187,22 +397,22 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
-    "Method": "GetHinhAnhsByPhong",
-    "RelativePath": "api/HinhAnhPhong/Phong/{maPhong}",
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhLPhongController",
+    "Method": "GetHinhAnhsByLoaiPhong",
+    "RelativePath": "api/HinhAnhLPhong/LoaiPhong/{maLoaiPhong}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "maPhong",
+        "Name": "maLoaiPhong",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhPhong.HinhAnhPhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.HinhAnhLPhong.HinhAnhLPhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -213,21 +423,327 @@
     ]
   },
   {
-    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhPhongController",
-    "Method": "SearchHinhAnhPhongs",
-    "RelativePath": "api/HinhAnhPhong/Search",
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HinhAnhLPhongController",
+    "Method": "SearchHinhAnhLPhongs",
+    "RelativePath": "api/HinhAnhLPhong/Search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "maPhong",
+        "Name": "maLoaiPhong",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
-        "Name": "soPhong",
+        "Name": "tenLoaiPhong",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "GetAll",
+    "RelativePath": "api/HuyDatPhong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "GetById",
+    "RelativePath": "api/HuyDatPhong/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "DuyetHuyDatPhong",
+    "RelativePath": "api/HuyDatPhong/{id}/Duyet",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HuyDatPhong.DuyetHuyRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "GetDanhSachChoHoanTien",
+    "RelativePath": "api/HuyDatPhong/ChoHoanTien",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "XacNhanHoanTien",
+    "RelativePath": "api/HuyDatPhong/HoanTien/{maHoanTien}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maHoanTien",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HuyDatPhong.XacNhanHoanTienRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "HuySauCheckIn",
+    "RelativePath": "api/HuyDatPhong/HuySauCheckIn/{maDatPhong}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maDatPhong",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "GetByKhachHang",
+    "RelativePath": "api/HuyDatPhong/KhachHang/Me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "KiemTraDieuKienHuy",
+    "RelativePath": "api/HuyDatPhong/KiemTraDieuKien/{maDatPhong}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maDatPhong",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.HuyDatPhongController",
+    "Method": "YeuCauHuyDatPhong",
+    "RelativePath": "api/HuyDatPhong/YeuCauHuy/{maDatPhong}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maDatPhong",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.HuyDatPhong.YeuCauHuyRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoaiPhongController",
+    "Method": "GetLoaiPhongs",
+    "RelativePath": "api/LoaiPhong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnTotNghiep_KS_BE.Interfaces.dto.LoaiPhong.LoaiPhongDTO, DoAnTotNghiep_KS_BE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoaiPhongController",
+    "Method": "CreateLoaiPhong",
+    "RelativePath": "api/LoaiPhong",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createLoaiPhongDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoaiPhong.CreateLoaiPhongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoaiPhong.LoaiPhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoaiPhongController",
+    "Method": "GetLoaiPhong",
+    "RelativePath": "api/LoaiPhong/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoaiPhong.LoaiPhongDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoaiPhongController",
+    "Method": "UpdateLoaiPhong",
+    "RelativePath": "api/LoaiPhong/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateLoaiPhongDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.LoaiPhong.UpdateLoaiPhongDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoaiPhongController",
+    "Method": "DeleteLoaiPhong",
+    "RelativePath": "api/LoaiPhong/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.LoaiPhongController",
+    "Method": "SearchLoaiPhongs",
+    "RelativePath": "api/LoaiPhong/Search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tenLoaiPhong",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "soNguoiToiDaMin",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soNguoiToiDaMax",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soGiuongMin",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soGiuongMax",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "giaMin",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "giaMax",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
@@ -442,6 +958,64 @@
   },
   {
     "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "GetNguoiDungByEmail",
+    "RelativePath": "api/NguoiDung/ByEmail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/NguoiDung/Profile/ChangePassword",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "changePasswordDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung.ChangePasswordDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "GetMyProfile",
+    "RelativePath": "api/NguoiDung/Profile/Me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
+    "Method": "UpdateMyProfile",
+    "RelativePath": "api/NguoiDung/Profile/Me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.NguoiDung.UpdateProfileDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.NguoiDungController",
     "Method": "GetNguoiDungsByRole",
     "RelativePath": "api/NguoiDung/Role/{vaiTro}",
     "HttpMethod": "GET",
@@ -623,6 +1197,27 @@
   },
   {
     "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
+    "Method": "GetPhongTrong",
+    "RelativePath": "api/Phong/PhongTrong",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ngayNhanPhong",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "ngayTraPhong",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.PhongController",
     "Method": "SearchPhongs",
     "RelativePath": "api/Phong/Search",
     "HttpMethod": "GET",
@@ -635,38 +1230,8 @@
         "IsRequired": false
       },
       {
-        "Name": "tenLoai",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "soGiuongMin",
+        "Name": "maLoaiPhong",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "soGiuongMax",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "soNguoiToiDaMin",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "soNguoiToiDaMax",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "giaMin",
-        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "giaMax",
-        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       },
       {
@@ -922,6 +1487,91 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.ThanhToanController",
+    "Method": "CreateThanhToan",
+    "RelativePath": "api/ThanhToan",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDTO",
+        "Type": "DoAnTotNghiep_KS_BE.Interfaces.dto.ThanhToan.CreateThanhToanDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.ThanhToanController",
+    "Method": "HuyThanhToan",
+    "RelativePath": "api/ThanhToan/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.ThanhToanController",
+    "Method": "XacNhanThanhToan",
+    "RelativePath": "api/ThanhToan/{id}/XacNhan",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DoAnTotNghiep_KS_BE.Controllers.XacNhanThanhToanRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.ThanhToanController",
+    "Method": "GetThongTinThanhToan",
+    "RelativePath": "api/ThanhToan/DatPhong/{maDatPhong}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maDatPhong",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.ThanhToanController",
+    "Method": "GetLichSuThanhToan",
+    "RelativePath": "api/ThanhToan/LichSu/{maDatPhong}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "maDatPhong",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
     "Method": "GetTienNghis",
     "RelativePath": "api/TienNghi",
@@ -966,6 +1616,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
+    "Method": "UploadIconTienNghi",
+    "RelativePath": "api/tiennghi-icon",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "DoAnTotNghiep_KS_BE.Controllers.TienNghiController",
